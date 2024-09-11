@@ -1,5 +1,35 @@
-canvas{
+canvas {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  width: 100vw;
+  color: white;
+  z-index: 99;
+  position: absolute;
+  width: 100%;
+  margin: 0px auto;
+  
+
+}
+
+
+#clock {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  z-index: 1; /* Asegúrate de que el reloj esté encima del canvas */
+}
+
+body {
+  margin: 0; /* Elimina márgenes del body */
+  padding: 0; /* Elimina padding del body si lo hay */
+  overflow: hidden; /* Oculta el overflow si es necesario */
+  background-color: #000; /* Fondo negro para el body */
 }
