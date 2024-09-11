@@ -6,6 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
+
 RectAreaLightUniformsLib.init();
 
 // Crear la escena
@@ -82,17 +83,35 @@ const rectLight1 = new THREE.RectAreaLight( 0xff0000, 4, 8, 3.5);
 rectLight1.position.set( 0, 2.5, 4.1 );
 scene.add( rectLight1 );
 
+const rectLight2 = new THREE.RectAreaLight( 0xff0000, 4, 8, 3.5);
+rectLight2.position.set( 0, 6.5, 4.1 );
+scene.add( rectLight2 );
+
+const rectLight3 = new THREE.RectAreaLight( 0xff0000, 4, 8, 3.5);
+rectLight3.position.set( 0, 11, 4.1 );
+scene.add( rectLight3 );
+
+const rectLight4 = new THREE.RectAreaLight( 0xff0000, 4, 8, 3.5);
+rectLight4.position.set( 0, 15.5, 4.1 );
+scene.add( rectLight4 );
+
+const rectLight5 = new THREE.RectAreaLight( 0xff0000, 4, 8, 3.5);
+rectLight5.position.set( 0, 20, 4.1 );
+scene.add( rectLight5 );
+
+const rectLight6 = new THREE.RectAreaLight( 0xff0000, 4, 8, 3.5);
+rectLight6.position.set( 0, 24.5, 4.1 );
+scene.add( rectLight6 );
 
 
-// Animaciones
 
-// Función para animar la intensidad de una luz
 function animateLightIntensity(light, startIntensity, endIntensity, duration) {
   const startTime = performance.now();
 
   function updateIntensity() {
       const elapsedTime = performance.now() - startTime;
       const progress = Math.min(elapsedTime / duration, 1); // Normaliza el progreso entre 0 y 1
+      startIntensity = light.intensity;
       light.intensity = startIntensity + (endIntensity - startIntensity) * progress;
 
       if (progress < 1) {
@@ -103,8 +122,55 @@ function animateLightIntensity(light, startIntensity, endIntensity, duration) {
   updateIntensity();
 }
 
+//create afunction that varies the intensity of the light, each light in a different oscilation
 
-animateLightIntensity(rectLight1, 5, 0.5, 5000); 
+function oscilateLightIntensity() {
+  animateLightIntensity(rectLight1, 0, 3, 10000);
+  animateLightIntensity(rectLight2, 3, 1, 10000);
+  animateLightIntensity(rectLight3, 0, 4, 10000);
+  animateLightIntensity(rectLight4, 2, 1, 10000);
+  animateLightIntensity(rectLight5, 1, 2, 10000);
+  animateLightIntensity(rectLight6, 5, 0, 10000);
+
+  
+  
+}
+
+oscilateLightIntensity();
+
+function oscilateLightIntensity2() {
+  animateLightIntensity(rectLight1, 3, 0, 10000);
+  animateLightIntensity(rectLight2, 1, 5, 10000);
+  animateLightIntensity(rectLight3, 4, 2, 10000);
+  animateLightIntensity(rectLight4, 1, 0, 10000);
+  animateLightIntensity(rectLight5, 2, 5, 10000);
+  animateLightIntensity(rectLight6, 0, 2, 10000);
+
+  
+  
+}
+
+function oscilateLightIntensity3() {
+  animateLightIntensity(rectLight1, 0, 5, 10000);
+  animateLightIntensity(rectLight2, 5, 3, 10000);
+  animateLightIntensity(rectLight3, 2, 0, 10000);
+  animateLightIntensity(rectLight4, 0, 5, 10000);
+  animateLightIntensity(rectLight5, 5, 1, 10000);
+  animateLightIntensity(rectLight6, 2, 4, 10000);
+
+  
+  
+}
+
+function wait(delay, callback) {
+  setTimeout(callback, delay);
+}
+
+wait(10000, oscilateLightIntensity2);
+wait(20000, oscilateLightIntensity3);
+
+
+
 
 // Ayudas
 
@@ -135,7 +201,7 @@ animate();
 //Párametros
 const startHour = 5; // 5 AM
 const endHour = 22; // 10 PM
-const duration = 60000; // 1 minuto en milisegundos
+const duration = 30000; // 1 minuto en milisegundos
 const clockElement = document.getElementById('clock');
 const startTime = performance.now();
 const endTime = startTime + duration;
