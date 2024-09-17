@@ -42,38 +42,69 @@ scene.add(flooro);
 
 // Crear el edificio
 
-//Párametros
-const floors = [];
-const numFloors = 6; 
-const width = 8;
-const height = 4;
-const depth = 8;
-const color = 'gray'; 
-const spacing = 0.5; 
+// Crear SD
 
-//Función para crear los pisos
-function createMultipleFloors(numFloors, width, height, depth, color, spacing, scene) {
-    const geometry = new THREE.BoxGeometry(width, height, depth);
-    const geometry2 = new THREE.BoxGeometry(width, spacing, depth);
-    const material = new THREE.MeshStandardMaterial({ color: color });
-    
-    for (let i = 0; i < numFloors; i++) {
-        const floor = new THREE.Mesh(geometry, material);
-        floor.position.set(0, i * (height + spacing) + height/2, 0);
-        floor.name = `floor${i + 1}`; 
-        scene.add(floor);
-        floors.push(floor); 
-    }
+// Bordes
+const geometry = new THREE.BoxGeometry(35, 2, 20);
+const material = new THREE.MeshStandardMaterial({ color:0x332f2c });
+const bordeI = new THREE.Mesh(geometry, material);
+scene.add(bordeI);
+bordeI.position.set(0, 1, 0);
+
+const geometry3 = new THREE.BoxGeometry(35, 16, 0.5);
+const bordeD = new THREE.Mesh(geometry3, material);
+scene.add(bordeD);
+bordeD.position.set(0, 9, -10);
+
+const geometry4 = new THREE.BoxGeometry(0.5, 16, 20);
+const bordeA = new THREE.Mesh(geometry4, material);
+scene.add(bordeA);
+bordeA.position.set(17.5, 9, 0);
+
+const bordeS = bordeA.clone();
+scene.add(bordeS);
+bordeS.position.set(-17.5, 9, 0);
+
+const geometry5 = new THREE.BoxGeometry(35, 1.5, 20);
+const bordeT = new THREE.Mesh(geometry5, material);
+scene.add(bordeT);
+bordeT.position.set(0, 16.5, 0);
+
+// Relleno
+const geometry6 = new THREE.BoxGeometry(34, 15, 19);
+const material3 = new THREE.MeshStandardMaterial({ color: 0x5d9b9b });
+const relleno = new THREE.Mesh(geometry6, material3);
+scene.add(relleno);
+relleno.position.set(0, 9, 0);
+
+// Crear ventanas
+const geometry7 = new THREE.BoxGeometry(32.5, 0.1, 0.1);
+const material4 = new THREE.MeshStandardMaterial({ color: 0xe5e5e5 });
+const ventana1 = new THREE.Mesh(geometry7, material4);  
+scene.add(ventana1);
+ventana1.position.set(0, 15.5, 9.5);
+
+for (let i = 1; i < 45; i++) {
+  let y = 15.5
+  const ventana = ventana1.clone();
+  scene.add(ventana);
+  ventana.position.set(0, y-(0.3*i), 9.5);
 }
 
+const geometry8 = new THREE.BoxGeometry(5, 0.1, 0.1);
+const ventana2 = new THREE.Mesh(geometry8, material4);
 
-createMultipleFloors(numFloors, width, height, depth, color, spacing, scene);
+
+
+
+
+
 
 
 //Iluminacion
 
 //Luz de ambiente
-const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(ambientLight);
 
 
