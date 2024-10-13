@@ -6,10 +6,10 @@ from datetime import datetime
 fake = Faker()
 
 # Edificios a generar
-buildings = ["ML", "SD", "LL", "CD", "RGD"]
+edificios = ["ML", "SD", "LL", "CD", "RGD"]
 
 # Pesos de los roles
-roles_with_weights = [
+pesos_roles = [
     ("EMPLEADO", 5),
     ("VIGILANCIA", 4),
     ("PROFESOR", 3),
@@ -22,11 +22,11 @@ roles_with_weights = [
 # Genera una puerta aleatoria
 def generar_puerta():
     if random.random() > 0.5:
-        building = random.choice(buildings)
-        return f"{building}{random.randint(1, 12)}-MOL{random.randint(1, 7)}-{random.choice(['IN', 'OUT'])}-T{random.randint(1, 13)}"
+        edificio = random.choice(edificios)
+        return f"{edificio}{random.randint(1, 12)}-MOL{random.randint(1, 7)}-{random.choice(['IN', 'OUT'])}-T{random.randint(1, 13)}"
     else:
-        veh_building = random.choice(["ML", "SD"])
-        return f"{veh_building}-VEHICULAR-{veh_building}-T{random.randint(1, 13)}"
+        veh_edificio = random.choice(["ML", "SD"])
+        return f"{veh_edificio}-VEHICULAR-{veh_edificio}-T{random.randint(1, 13)}"
 
 # Genera la hora de acceso de manera ponderada
 def generar_hora_ponderada(before_17=False, after_5=False):
@@ -51,7 +51,7 @@ def crear_hora(before_17=False, after_5=False):
 # Generar una fila
 def crear_fila():
     # Selecciona el rol dependiendo de los pesos
-    role, _ = random.choices(roles_with_weights, weights=[role[1] for role in roles_with_weights], k=1)[0]
+    role, _ = random.choices(pesos_roles, weights=[role[1] for role in pesos_roles], k=1)[0]
     
     if role == "ASEO":
         timestamp = crear_hora(before_17=True)
