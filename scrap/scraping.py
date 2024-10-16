@@ -28,12 +28,12 @@ driver.find_element(By.XPATH, xpath).click()
 time.sleep(3)
 
 #xpath para el dropdown list de departamentos
-xpath = "//*[@id='programa']"
-driver.find_element(By.XPATH, xpath).click()
+#xpath = "//*[@id='programa']"
+#driver.find_element(By.XPATH, xpath).click()
 
-time.sleep(2)
-dpto = "//*[@id='programa']/option[75]"
-driver.find_element(By.XPATH, dpto).click()
+#time.sleep(2)
+#dpto = "//*[@id='programa']/option[75]"
+#driver.find_element(By.XPATH, dpto).click()
 
 button = "//*[@id='sidebar-wrapper']/div[2]/form/button[1]"
 driver.find_element(By.XPATH, button).click()
@@ -82,40 +82,7 @@ while True:
         print("No more pages or unable to find the next button. Stopping.", e)
         break  # Exit the loop if the "Next" button is not found
 
-formatted_list = []
-
-
-for i in card_list:
-    lines = i['text'].split("\n")
-
-    formatted_data = {
-    'Course Code': lines[0].split()[0],
-    'Course Name': ' '.join(lines[0].split()[1:]),
-    'Cupo': lines[2].strip(),
-    'NRC': lines[3].split(": ")[1],
-    'Sección': lines[4].split(": ")[1],
-    'Créditos': lines[5].split(": ")[1],
-    'Periodo': lines[6].split(": ")[1],
-    'Parte de Periodo': lines[7].split(": ")[1],
-    'Instructor Principal': lines[8].split(": ")[1],
-    'Días y Horas': lines[10].strip(),
-    'Fecha Inicio': lines[11].strip(),
-    'Fecha Fin': lines[12].strip(),
-    'Edificio': lines[13].strip(),
-    'Cupos Ofrecidos': lines[-1].split()[1],
-    'Cupos Inscritos': lines[-1].split()[2],
-    'Cupos Disponibles': lines[-1].split()[3]
-    }
-    formatted_list.append(formatted_data)
-
-
 driver.quit()
-
-# Write the data to a JSON file
-with open("formatted_cards_data.json", mode='w', encoding='utf-8') as file:
-    json.dump(formatted_list, file, indent=4, ensure_ascii=False)
 
 with open("no_formatted_cards_data.json", mode='w', encoding='utf-8') as file:
     json.dump(card_list, file, indent=4, ensure_ascii=False)
-
-print(f"Data successfully written to 'formatted_cards_data.json'. Total cards: {len(formatted_list)}")
