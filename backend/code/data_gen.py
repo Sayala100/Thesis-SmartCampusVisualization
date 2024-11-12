@@ -32,7 +32,7 @@ def generar_puerta():
 def generar_hora_ponderada(before_17=False, after_5=False):
     if before_17:
         hours = [i for i in range(17)]  # Antes de las 5pm
-        weights = [1]*5 + [5]*12
+        weights = [0.3]*5 + [5]*12
     elif after_5:
         hours = [i for i in range(5, 24)]  # Despues de las 5am
         weights = [5]*12 + [3]*4 + [2]*3
@@ -54,8 +54,8 @@ def crear_fila():
     role, _ = random.choices(pesos_roles, weights=[role[1] for role in pesos_roles], k=1)[0]
     
     if role == "ASEO":
-        timestamp = crear_hora(before_17=True)
-    elif role == "ESTUDIANTE":
+        timestamp = crear_hora(before_17=True, after_5=True)
+    elif role != "VIGILANCIA":
         timestamp = crear_hora(after_5=True)
     else:
         timestamp = crear_hora()
