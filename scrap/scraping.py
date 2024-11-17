@@ -19,13 +19,13 @@ driver.get(url)
 
 time.sleep(5)
 
-xpath = "//*[@id='g-recaptcha']/div/div/iframe"
+#xpath = "//*[@id='g-recaptcha']/div/div/iframe"
 
-driver.implicitly_wait(10)
+#driver.implicitly_wait(10)
 
-driver.find_element(By.XPATH, xpath).click()
+#driver.find_element(By.XPATH, xpath).click()
 
-time.sleep(3)
+time.sleep(10)
 
 #xpath para el dropdown list de departamentos
 #xpath = "//*[@id='programa']"
