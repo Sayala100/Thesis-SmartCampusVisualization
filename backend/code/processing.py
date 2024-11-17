@@ -38,10 +38,11 @@ for materia in data_json:
     # Split text into lines and strip any leading/trailing whitespace
     lines = [line.strip() for line in materia['text'].splitlines()]
     lines = [line for line in lines if "Atributos" not in line]
+    lines = [line for line in lines if "Profesores" not in line]
     campus_index=0
     for i in range(len(lines)):
         line = lines[i]
-        if "Campus:" in line:
+        if "Lugar:" in line:
             campus_index = i
             break
     # Remove lines that dont have colon and are before campus_index
@@ -76,10 +77,14 @@ for materia in data_json:
     else: cupo = lines[2]
 
     extra_despl=0
-    if "Campus" in lines[8-desplazamiento]:
+    if "Lugar" in lines[8-desplazamiento]:
         extra_despl = 1
 
-
+    for i in range(len(lines)):
+        print(i, lines[i])
+    print("Desplazamiento: ", desplazamiento)
+    print("Extra desplazamiento: ", extra_despl)
+    print("\n")
     # Extract other relevant details
     course_data = {
         "Curso": lines[0],
@@ -90,7 +95,7 @@ for materia in data_json:
         "Periodo": lines[6-desplazamiento].split(":")[1].strip(),
         "Parte de Periodo": lines[7-desplazamiento].split(":")[1].strip(),
         "Instructor Principal": lines[8-desplazamiento].split(":")[1].strip(),
-        "Campus": lines[9-desplazamiento-extra_despl].split(":")[1].strip(),
+        "Lugar": lines[9-desplazamiento-extra_despl].split(":")[1].strip(),
         "Horario": horarios,
         # Extract the "Ofrecidos", "Inscritos", and "Disponibles" row (last line)
         "Ofrecidos": int(lines[-1].split()[1]),

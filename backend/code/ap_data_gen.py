@@ -20,4 +20,7 @@ salones = salones[salones["Bloque"].isin(edificios)]
 salones.sample(10)
 # Un salon puede tener entre 1 y 2 APs 
 
+##Nombre | Numero de dispositivos | MAC | Edificio | Piso | Salon | Rango de hora |
+## AP-001 | 10 | 00:00:00:00:00:00 | ML | 1 | 101 | 8:00-9:00 |
+
 # %%
