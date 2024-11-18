@@ -50,7 +50,7 @@ for materia in data_json:
     lines = [line for line in lines if ":" in line or lines.index(line) > campus_index or lines.index(line) <= 4 ] 
 
     # Extract schedule lines by identifying lines containing '.Edif.'
-    schedule_lines = [line for line in lines if ".Edif." in line]
+    schedule_lines = [line for line in lines if ".Edif." in line or ".centro" in line or "Bloque" in line]
 
     # Define schedule keys
     horario_keys = ["Días", "Horas", "Salón", "Fecha inicio", "Fecha fin", "Edificio"]
@@ -73,18 +73,14 @@ for materia in data_json:
     desplazamiento=0
     if "NRC" in lines[2]: 
         desplazamiento = 1
-        cupo = ""
+        cupo = "Sin cupo"
     else: cupo = lines[2]
 
     extra_despl=0
     if "Lugar" in lines[8-desplazamiento]:
         extra_despl = 1
 
-    for i in range(len(lines)):
-        print(i, lines[i])
-    print("Desplazamiento: ", desplazamiento)
-    print("Extra desplazamiento: ", extra_despl)
-    print("\n")
+
     # Extract other relevant details
     course_data = {
         "Curso": lines[0],
@@ -102,6 +98,13 @@ for materia in data_json:
         "Inscritos": int(lines[-1].split()[2]),
         "Disponibles": int(lines[-1].split()[3]),
     }
+
+    # if course_data['NRC'] == "71497":
+    #     for i in range(len(lines)):
+    #         print(i, lines[i])
+    #     print("Desplazamiento: ", desplazamiento)
+    #     print("Extra desplazamiento: ", extra_despl)
+    #     print("\n")
 
     # Convert to DataFrame
     df = pd.DataFrame([course_data])
