@@ -33,68 +33,55 @@ renderer.render(scene, camera);
 
 const loader = new GLTFLoader();
 
-loader.load( 'imports/SD.glb', function ( gltf ) {
+const loadedModels = []; // Array to store model information
 
-	const object = gltf.scene;
-  scene.add( object );
+function logModelDimensions(name, object) {
+    // Compute the bounding box
+    const box = new THREE.Box3().setFromObject(object);
+    const size = new THREE.Vector3();
+    const center = new THREE.Vector3();
+    box.getSize(size); // Get dimensions
+    box.getCenter(center); // Get center position
 
- 
+    // Log dimensions and position
+    console.log(`Model: ${name}`);
+    console.log('Dimensions:', size); // Logs width, height, depth
+    console.log('Position (Center):', center); // Logs center position
 
-}, undefined, function ( error ) {
+    // Store the data for future use
+    loadedModels.push({
+        name,
+        object,
+        dimensions: size,
+        position: center
+    });
+}
 
-	console.error( error );
+// Load all models
+const modelFiles = [
+    { name: 'SD', path: 'imports/SD.glb' },
+    { name: 'Entrada_Caneca', path: 'imports/Entrada_Caneca.glb' },
+    { name: 'ML', path: 'imports/ML.glb' },
+    { name: 'Lleras', path: 'imports/Lleras.glb' },
+    { name: 'Civico2', path: 'imports/Civico2.glb' },
+    { name: 'SD_1Color', path: 'imports/SD_1Color.glb' }
+];
 
-} );
-
-loader.load( 'imports/Entrada_Caneca.glb', function ( gltf ) {
-
-	scene.add( gltf.scene );
-
-}, undefined, function ( error ) {
-
-	console.error( error );
-
-} );
-
-loader.load( 'imports/ML.glb', function ( gltf ) {
-
-	scene.add( gltf.scene );
-
-}, undefined, function ( error ) {
-
-	console.error( error );
-
-} );
-
-loader.load( 'imports/Lleras.glb', function ( gltf ) {
-
-	scene.add( gltf.scene );
-
-}, undefined, function ( error ) {
-
-	console.error( error );
-
-} );
-
-loader.load( 'imports/Civico2.glb', function ( gltf ) {
-
-	scene.add( gltf.scene );
-
-}, undefined, function ( error ) {
-
-	console.error( error );
-
-} );
-
-loader.load( 'imports/SD_1Color.glb', function ( gltf ) {
-
-	scene.add( gltf.scene );
-
-}, undefined, function ( error ) {
-
-	console.error( error );
-
-} );
+// Iterate over each model file and load
+modelFiles.forEach(({ name, path }) => {
+    loader.load(
+        path,
+        function (gltf) {
+            const object = gltf.scene;
+            scene.add(object); // Add to the scene
+            logModelDimensions(name, object); // Log dimensions and position
+        },
+        undefined,
+        function (error) {
+            console.error(`Error loading model: ${name}`, error);
+        }
+    );
+});
 
 //Creación de suelo
 const geometry2 = new THREE.BoxGeometry(100, 1, 100);
@@ -111,46 +98,71 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
 
+// Store the lights around each model
+const modelLights = {};
 
-//Luz civico 1
-const rectLight1 = new THREE.RectAreaLight( 0xff0000, 1, 2.4, 1.3);
-rectLight1.position.set( 5.8, 0.7, 9.05 );
-rectLight1.distance = 1;
-scene.add( rectLight1 );
+// Function to create surrounding lights for a model
+function createSurroundingLights(modelName, position, dimensions) {
+  const lights = [];
 
-//Luz civico 2
-const rectLight2 = new THREE.RectAreaLight( 0xff0000, 1, 3.7, 1.3);
-rectLight2.position.set( 7, 0.7, 7.1 );
-rectLight2.rotation.set(0, Math.PI / 2, 0);
-rectLight2.distance = 1;
-scene.add( rectLight2 );
+  // Create lights around the model based on its position and dimensions
+  const createLight = (color, width, height, xOffset, yOffset, zOffset, rotation = 0) => {
+    const light = new THREE.RectAreaLight(color, 1, width, height);
+    light.position.set(position.x + xOffset, position.y + yOffset, position.z + zOffset);
+    light.rotation.set(0, rotation, 0);
+    light.distance = 1;
+    scene.add(light);
+    return light;
+  };
 
-//Luz civico 3
-const rectLight3 = new THREE.RectAreaLight( 0xff0000, 1, 3.7, 1.3);
-rectLight3.position.set( 4.6, 0.7, 7.1 );
-rectLight3.rotation.set(0, Math.PI / -2, 0);
-rectLight3.distance = 1;
-scene.add( rectLight3 );
+  // Surround the model with 5 lights based on its dimensions
+  lights.push(createLight(0xff0000, dimensions.x, dimensions.y, 0, 1, 0)); // top light
+  lights.push(createLight(0xff0000, dimensions.x, dimensions.y, 0, -1, 0)); // bottom light
+  lights.push(createLight(0xff0000, dimensions.z, dimensions.y, 1, 0, 0, Math.PI / 2)); // front light
+  lights.push(createLight(0xff0000, dimensions.z, dimensions.y, -1, 0, 0, -Math.PI / 2)); // back light
+  lights.push(createLight(0xff0000, dimensions.x, dimensions.z, 0, 2, 0)); // above light (new)
 
-//Luz civico 4
-const rectLight4 = new THREE.RectAreaLight( 0xff0000, 1, 2.4, 1.3);
-rectLight4.position.set( 5.8, 0.7, 4.9 );
-rectLight4.rotation.set(0, Math.PI, 0);
-rectLight4.distance = 1;
-scene.add( rectLight4 );
+  // Store the lights for future access
+  modelLights[modelName] = lights;
+}
 
-//Luz civico techo
-const rectLight5 = new THREE.RectAreaLight( 0xff0000, 1, 3.7, 2.4);
-rectLight5.position.set( 5.8, 1.5, 7.1 );
-rectLight5.rotation.set(Math.PI / 2, Math.PI, Math.PI / 2);
-rectLight5.distance = 1;
-scene.add( rectLight5 );
+// Create lights around each model
+createSurroundingLights('SD', { x: 0.075, y: 1.474, z: 4.912 }, { x: 3.8, y: 2.92, z: 6.1 });
+createSurroundingLights('Entrada_Caneca', { x: 8.063, y: 0.380, z: 0.914 }, { x: 0.67, y: 0.62, z: 1.38 });
+createSurroundingLights('Lleras', { x: 5.352, y: 0.984, z: 0.321 }, { x: 3.02, y: 2.46, z: 2.84 });
+createSurroundingLights('ML', { x: 0.333, y: 1.405, z: 6.735 }, { x: 4.71, y: 2.80, z: 5.38 });
+createSurroundingLights('Civico2', { x: 5.785, y: 0.664, z: 7.138 }, { x: 2.35, y: 1.38, z: 3.71 });
 
-//Luz LL 1
-const rectLight6 = new THREE.RectAreaLight( 0xff0000, 1, 2.4, 2);
-rectLight6.position.set( 5.8, 0.7, 1.95 );
-rectLight6.distance = 1;
-scene.add( rectLight6 );
+// Function to animate the intensity of surrounding lights for a specific model
+function animateModelLightIntensity(modelName, startIntensity, endIntensity, duration) {
+  const lights = modelLights[modelName];
+  
+  if (!lights) {
+    console.error(`No lights found for model: ${modelName}`);
+    return;
+  }
+
+  const startTime = performance.now();
+
+  function updateIntensity() {
+    const elapsedTime = performance.now() - startTime;
+    const progress = Math.min(elapsedTime / duration, 1); // Normalizes the progress
+
+    // Set the intensity for each light
+    lights.forEach(light => {
+      light.intensity = startIntensity + (endIntensity - startIntensity) * progress;
+    });
+
+    if (progress < 1) {
+      requestAnimationFrame(updateIntensity);
+    }
+  }
+
+  updateIntensity();
+}
+
+// Example of how to call the animateModelLightIntensity function:
+animateModelLightIntensity('SD', 0.5, 2, 2000); // Fade in lights around 'SD' from intensity 0.5 to 2 over 2 seconds
 
 
 
@@ -177,16 +189,7 @@ function animateLightIntensity(light, startIntensity, endIntensity, duration) {
 
 
 
-// Ayudas
 
-
-//Ayudador luz
-// scene.add( new RectAreaLightHelper( rectLight1 ) );
-// scene.add( new RectAreaLightHelper( rectLight2 ) );
-// scene.add( new RectAreaLightHelper( rectLight3 ) );
-// scene.add( new RectAreaLightHelper( rectLight4 ) );
-// scene.add( new RectAreaLightHelper( rectLight5 ) );
-scene.add( new RectAreaLightHelper( rectLight6 ) );
 
 // Controles de orbita
 const controls = new OrbitControls(camera, renderer.domElement);
