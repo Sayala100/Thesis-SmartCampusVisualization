@@ -104,30 +104,34 @@ const modelLights = {};
 // Function to create surrounding lights for a model
 function createSurroundingLights(modelName, position, dimensions) {
   const lights = [];
+  const helpers = [];
+
 
   // Create lights around the model based on its position and dimensions
-  const createLight = (color, width, height, xOffset, yOffset, zOffset, rotation = 0) => {
+  const createLight = (color, width, height, xOffset, yOffset, zOffset, rotationx = 0, rotationy = 0, rotationz = 0) => {
     const light = new THREE.RectAreaLight(color, 1, width, height);
     light.position.set(position.x + xOffset, position.y + yOffset, position.z + zOffset);
-    light.rotation.set(0, rotation, 0);
+    light.rotation.set(rotationx, rotationy, rotationz);
     light.distance = 1;
     scene.add(light);
+
+    
+
     return light;
   };
 
   // Surround the model with 5 lights based on its dimensions
-  lights.push(createLight(0xff0000, dimensions.x, dimensions.y, 0, 1, 0)); // top light
-  lights.push(createLight(0xff0000, dimensions.x, dimensions.y, 0, -1, 0)); // bottom light
-  lights.push(createLight(0xff0000, dimensions.z, dimensions.y, 1, 0, 0, Math.PI / 2)); // front light
-  lights.push(createLight(0xff0000, dimensions.z, dimensions.y, -1, 0, 0, -Math.PI / 2)); // back light
-  lights.push(createLight(0xff0000, dimensions.x, dimensions.z, 0, 2, 0)); // above light (new)
-
+  lights.push(createLight(0xff0000, dimensions.x, dimensions.y, 0, 0 , -dimensions.z/2, 0, Math.PI, 0)); // atras
+  lights.push(createLight(0xff0000, dimensions.x, dimensions.y, 0, 0, dimensions.z/2+0.1)); // frente
+  lights.push(createLight(0xff0000, dimensions.z, dimensions.y, dimensions.x/2, 0, 0, 0, Math.PI / 2, 0)); // front light
+  lights.push(createLight(0xff0000, dimensions.z, dimensions.y, -dimensions.x/2, 0, 0, 0, -Math.PI / 2, 0)); // back light
+  lights.push(createLight(0xff0000, dimensions.x, dimensions.z, 0, dimensions.y/2+0.1, 0, -Math.PI/2)); // above light (new)
   // Store the lights for future access
   modelLights[modelName] = lights;
 }
 
 // Create lights around each model
-createSurroundingLights('SD', { x: 0.075, y: 1.474, z: 4.912 }, { x: 3.8, y: 2.92, z: 6.1 });
+createSurroundingLights('SD', { x: 0.075, y: 1.474, z: 0 }, { x: 3.8, y: 2.92, z: 6.1 });
 createSurroundingLights('Entrada_Caneca', { x: 8.063, y: 0.380, z: 0.914 }, { x: 0.67, y: 0.62, z: 1.38 });
 createSurroundingLights('Lleras', { x: 5.352, y: 0.984, z: 0.321 }, { x: 3.02, y: 2.46, z: 2.84 });
 createSurroundingLights('ML', { x: 0.333, y: 1.405, z: 6.735 }, { x: 4.71, y: 2.80, z: 5.38 });
@@ -162,7 +166,7 @@ function animateModelLightIntensity(modelName, startIntensity, endIntensity, dur
 }
 
 // Example of how to call the animateModelLightIntensity function:
-animateModelLightIntensity('SD', 0.5, 2, 2000); // Fade in lights around 'SD' from intensity 0.5 to 2 over 2 seconds
+animateModelLightIntensity('SD', 0.5, 1, 2000); // Fade in lights around 'SD' from intensity 0.5 to 2 over 2 seconds
 
 
 
@@ -244,8 +248,3 @@ function updateClock() {
 
 updateClock();
 
-// Create an AxesHelper with size 5
-const axesHelper = new THREE.AxesHelper(5);  // The number specifies the size of the axes
-
-// Add the axes helper to the scene
-scene.add(axesHelper);
