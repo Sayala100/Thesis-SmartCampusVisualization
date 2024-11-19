@@ -16,6 +16,25 @@ fake = Faker()
 #print(salones)
 edificios = ["ML", "SD", "LL", "RGD"]
 
+pesos_pisos = [
+    ("ML_1",2),
+    ("ML_5",3),
+    ("ML_6",2),
+    ("LL_1",1),
+    ("LL_2",1),
+    ("LL_3",2),
+    ("Rgd_0000",2),
+    ("Rgd_000",2),
+    ("Rgd_1",3),
+    ("Rgd_2",2),
+    ("Rgd_3",2),
+    ("Sd_2",1),
+    ("Sd_3",2),
+    ("Sd_4",1),
+    ("Sd_7",3),
+    ("Sd_8",3)
+]
+
 salones = pd.read_csv('../data/salones.csv', sep=';')
 salones = salones[salones["Bloque"].isin(edificios)]
 salones.sample(10)
@@ -61,27 +80,50 @@ def crear_fila(capacidad):
    
     return [num_dispositivos, aps]
 
-def crear_fila2(capacidad):
-    num_dispositivos = random.randint(1, capacidad)
+def crear_fila2(capacidad,salon ):
+    for i in pesos_pisos:
+        if i[0] in salon:
+            peso = i[1]
+            break
+        else:
+            peso = 0
+    
+
+    num_dispositivos = random.randint(1, capacidad//2)*peso
     hora = crear_hora()
     mac = fake.mac_address()
     ap_name = fake.bothify(text="AP-###")
     return [num_dispositivos, ap_name, mac, hora]
 # %%
 # Generar los datos
-for i in salones.index:
-    capacidad = salones["Capacidad"][i]
+salones.dropna(inplace=True)
+salones.reset_index(drop=True, inplace=True)
+for index, row in salones.iterrows():
+    capacidad = row["Capacidad"]
+    salon = salones["Salon"][index] 
     num_aps = capacidad // 25
     if num_aps == 0:
         num_aps = 1
 
-    for j in range(num_aps):
-        data = crear_fila2(capacidad)
+    if num_aps ==1:
+        data = crear_fila2(capacidad, salon)
         salones.at[i, "Dispositivos conectados"] = data[0]
         salones.at[i, "Nombre AP"] = data[1]
         salones.at[i, "MAC"] = data[2]
         salones.at[i, "Hora"] = data[3]
-
+    else:
+        for j in range(num_aps):
+            data = crear_fila2(capacidad, salon)
+        
+            # Create a new row with the same structure as `salones`
+            new_row = row.copy()  # Copy the current row data
+            new_row["Dispositivos conectados"] = data[0]
+            new_row["Nombre AP"] = data[1]
+            new_row["MAC"] = data[2]
+            new_row["Hora"] = data[3]
+            
+            # Append the new row to the DataFrame
+            salones = pd.concat([salones, pd.DataFrame([new_row])], axis=0, ignore_index=True)
 #%%
 salones.sample(10)
 # %%

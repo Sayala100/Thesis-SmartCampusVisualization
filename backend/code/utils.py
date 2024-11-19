@@ -1,8 +1,28 @@
 import pandas as pd
 import random
+import cv2
 def load_data(route):
     data =  pd.read_csv(route)
     return data
+
+import os
+import cv2
+
+def load_images(route):
+    images = []
+    valid_extensions = {'.jpg', '.png'}
+    for file_name in os.listdir(route):
+        _, ext = os.path.splitext(file_name)
+
+        if ext.lower() in valid_extensions:
+
+            file_path = os.path.join(route, file_name)
+
+            image = cv2.imread(file_path)
+            if image is not None: 
+                images.append(image)
+    
+    return images
 
 def create_index(rol):
     if rol == "PROFESOR":
