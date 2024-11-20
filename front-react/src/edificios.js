@@ -13,6 +13,15 @@ RectAreaLightUniformsLib.init();
 // Crear la escena
 const scene = new THREE.Scene();
 
+let START_HUES = {
+  'SD': 0.66,
+  'ML': 0.66,
+  'LL': 0.66,
+  'RGD': 0.66,
+  'Entrada_Caneca': 0.66
+};
+
+
 // Crear la cámara
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
 
@@ -35,39 +44,13 @@ renderer.render(scene, camera);
 
 const loader = new GLTFLoader();
 
-const loadedModels = []; // Array to store model information
-
-function logModelDimensions(name, object) {
-    // Compute the bounding box
-    const box = new THREE.Box3().setFromObject(object);
-    const size = new THREE.Vector3();
-    const center = new THREE.Vector3();
-    box.getSize(size); // Get dimensions
-    box.getCenter(center); // Get center position
-
-    // Log dimensions and position
-    console.log(`Model: ${name}`);
-    console.log('Dimensions:', size); // Logs width, height, depth
-    console.log('Position (Center):', center); // Logs center position
-
-    // Store the data for future use
-    loadedModels.push({
-        name,
-        object,
-        dimensions: size,
-        position: center
-    });
-}
-
-
 // Load all models
 const modelFiles = [
     { name: 'SD', path: '/imports/SD.glb' },
     { name: 'Entrada_Caneca', path: '/imports/Entrada_Caneca.glb' },
     { name: 'ML', path: '/imports/ML.glb' },
     { name: 'Lleras', path: '/imports/Lleras.glb' },
-    { name: 'Civico2', path: '/imports/Civico2.glb' },
-    { name: 'SD_1Color', path: '/imports/SD_1Color.glb' }
+    { name: 'Civico2', path: '/imports/Civico2.glb' }
 ];
 
 
@@ -78,7 +61,6 @@ modelFiles.forEach(({ name, path }) => {
         function (gltf) {
             const object = gltf.scene;
             scene.add(object); // Add to the scene
-            logModelDimensions(name, object); // Log dimensions and position
         },
         undefined,
         function (error) {
@@ -125,11 +107,11 @@ function createSurroundingLights(modelName, position, dimensions) {
   };
 
   // Surround the model with 5 lights based on its dimensions
-  lights.push(createLight(0xff0000, dimensions.x, dimensions.y, 0, 0 , -dimensions.z/2, 0, Math.PI, 0)); // atras
-  lights.push(createLight(0xff0000, dimensions.x, dimensions.y, 0, 0, dimensions.z/2+0.1)); // frente
-  lights.push(createLight(0xff0000, dimensions.z, dimensions.y, dimensions.x/2, 0, 0, 0, Math.PI / 2, 0)); // front light
-  lights.push(createLight(0xff0000, dimensions.z, dimensions.y, -dimensions.x/2, 0, 0, 0, -Math.PI / 2, 0)); // back light
-  lights.push(createLight(0xff0000, dimensions.x, dimensions.z, 0, dimensions.y/2+0.1, 0, -Math.PI/2)); // above light (new)
+  lights.push(createLight(0x55ff00, dimensions.x, dimensions.y, 0, 0 , -dimensions.z/2, 0, Math.PI, 0)); // atras
+  lights.push(createLight(0x55ff00, dimensions.x, dimensions.y, 0, 0, dimensions.z/2+0.1)); // frente
+  lights.push(createLight(0x55ff00, dimensions.z, dimensions.y, dimensions.x/2, 0, 0, 0, Math.PI / 2, 0)); // front light
+  lights.push(createLight(0x55ff00, dimensions.z, dimensions.y, -dimensions.x/2, 0, 0, 0, -Math.PI / 2, 0)); // back light
+  lights.push(createLight(0x55ff00, dimensions.x, dimensions.z, 0, dimensions.y/2+0.1, 0, -Math.PI/2)); // above light (new)
   // Store the lights for future access
   modelLights[modelName] = lights;
 }
@@ -137,10 +119,21 @@ function createSurroundingLights(modelName, position, dimensions) {
 // Create lights around each model
 createSurroundingLights('SD', { x: 0.075, y: 1.474, z: 0 }, { x: 3.8, y: 2.92, z: 6.1 });
 createSurroundingLights('Entrada_Caneca', { x: 8.063, y: 0.380, z: 0.914 }, { x: 0.67, y: 0.62, z: 1.38 });
-createSurroundingLights('Lleras', { x: 5.352, y: 0.984, z: 0.321 }, { x: 3.02, y: 2.46, z: 2.84 });
+createSurroundingLights('LL', { x: 5.352, y: 0.984, z: 0.321 }, { x: 3.02, y: 2.46, z: 2.84 });
 createSurroundingLights('ML', { x: 0.333, y: 1.405, z: 6.735 }, { x: 4.71, y: 2.80, z: 5.38 });
-createSurroundingLights('Civico2', { x: 5.785, y: 0.664, z: 7.138 }, { x: 2.35, y: 1.38, z: 3.71 });
+createSurroundingLights('RGD', { x: 5.785, y: 0.664, z: 7.138 }, { x: 2.35, y: 1.38, z: 3.71 });
 
+async function fetchBuildingEntries() {
+  try {
+      const response = await axios.get('https://tesis.notadev.lat/procesar_entradas_edificio');
+      return response.data;
+  } catch (error) {
+      console.error('Error fetching building entries:', error);
+  }
+}
+
+// Llamar a la función
+const edificios = await fetchBuildingEntries();
 
 function animateModelLightHue(modelName, startHue, endHue, duration) {
   const lights = modelLights[modelName];
@@ -172,39 +165,39 @@ function animateModelLightHue(modelName, startHue, endHue, duration) {
   }
 
   updateHue();
+  
 }
 
 // Example of how to call the animateModelLightHue function:
 
 
 
+async function actualizarColores() {
+  
+  // Delay function to wait for the specified duration
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
-function actualizarColores() {
-  // Recorremos todos los edificios
-  for (const edificio in edificios) {
-    const horas = edificios[edificio];
-    
-    // Recorremos todas las horas del edificio
-    for (const rango in horas) {
-      const valor = horas[rango];
+  console.log(edificios);
+  
 
-      // Calculamos el tono (hue) para cada valor
+  for (const rango in edificios[Object.keys(edificios)[0]]) {
+
+    for (const edificio in edificios){
+      const valor = edificios[edificio][rango];
       const hue = calcularTono(valor);
-
-      // Llamamos a animateModelLightHue para animar el cambio de color
-      animateModelLightHue(edificio, 0, hue, 2000);  // Duración de 2 segundos para el cambio de hue
+      const startHue = START_HUES[edificio];
+      console.log(edificio, valor, hue)
+      animateModelLightHue(edificio, startHue, hue, 1000);
+      START_HUES[edificio] = hue;
     }
+    await sleep(1000);
   }
 }
-
 // Función para simular el cambio de hora cada 2 segundos
-function simularCambioDeHora() {
-  setInterval(actualizarColores, 2000);  // Actualiza los colores cada 2 segundos
-  console.log('Simulando cambio de hora...');
-}
+actualizarColores();
 
-// Iniciar la simulación
-simularCambioDeHora();
 
 
 // Controles de orbita
@@ -281,27 +274,19 @@ function resize() {
 
 
 
-async function fetchBuildingEntries() {
-    try {
-        const response = await axios.get('https://tesis.notadev.lat/procesar_entradas_edificio');
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error fetching building entries:', error);
-    }
-}
 
-// Llamar a la función
-const edificios = fetchBuildingEntries();
 
 function calcularTono(valor, minimo = 0, maximo = 4000) {
 
-  if (valor < minimo || valor > maximo) {
-      throw new Error(`El valor debe estar entre ${minimo} y ${maximo}.`);
+  
+  if (valor < minimo) {
+    valor = minimo;
+  } else if (valor > maximo) {
+    valor = maximo;
   }
+  const proporcion = (maximo - valor) / (maximo - minimo);
 
-  const proporcion = (valor - minimo) / (maximo - minimo);
-
-   const hue = 0.33 * proporcion;
+  const hue = 0.66 * proporcion;
 
   return hue;
 }
