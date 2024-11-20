@@ -6,6 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import axios from 'axios';
 
 RectAreaLightUniformsLib.init();
 
@@ -20,6 +21,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
   context: document.querySelector('#bg').getContext('webgl2')
 });
+
 
 
 // Configurar el renderizador
@@ -173,31 +175,36 @@ function animateModelLightHue(modelName, startHue, endHue, duration) {
 }
 
 // Example of how to call the animateModelLightHue function:
-animateModelLightHue('ML', 0, 0.33, 20000);
 
 
 
-function animateLightIntensity(light, startIntensity, endIntensity, duration) {
-  const startTime = performance.now();
 
-  function updateIntensity() {
-      const elapsedTime = performance.now() - startTime;
-      const progress = Math.min(elapsedTime / duration, 1); // Normaliza el progreso entre 0 y 1
-      
-      light.intensity = startIntensity + (endIntensity - startIntensity) * progress;
+function actualizarColores() {
+  // Recorremos todos los edificios
+  for (const edificio in edificios) {
+    const horas = edificios[edificio];
+    
+    // Recorremos todas las horas del edificio
+    for (const rango in horas) {
+      const valor = horas[rango];
 
-      if (progress < 1) {
-          requestAnimationFrame(updateIntensity);
-      }
+      // Calculamos el tono (hue) para cada valor
+      const hue = calcularTono(valor);
+
+      // Llamamos a animateModelLightHue para animar el cambio de color
+      animateModelLightHue(edificio, 0, hue, 2000);  // Duración de 2 segundos para el cambio de hue
+    }
   }
-
-  updateIntensity();
 }
 
-//create afunction that varies the intensity of the light, each light in a different oscilation
+// Función para simular el cambio de hora cada 2 segundos
+function simularCambioDeHora() {
+  setInterval(actualizarColores, 2000);  // Actualiza los colores cada 2 segundos
+  console.log('Simulando cambio de hora...');
+}
 
-
-
+// Iniciar la simulación
+simularCambioDeHora();
 
 
 // Controles de orbita
@@ -272,11 +279,11 @@ function resize() {
 
 }
 
-const axios = require('axios');
+
 
 async function fetchBuildingEntries() {
     try {
-        const response = await axios.get('http://localhost:8000/procesar_entradas_edificio');
+        const response = await axios.get('https://tesis.notadev.lat/procesar_entradas_edificio');
         console.log(response.data);
     } catch (error) {
         console.error('Error fetching building entries:', error);
@@ -284,7 +291,7 @@ async function fetchBuildingEntries() {
 }
 
 // Llamar a la función
-fetchBuildingEntries();
+const edificios = fetchBuildingEntries();
 
 function calcularTono(valor, minimo = 0, maximo = 4000) {
 
