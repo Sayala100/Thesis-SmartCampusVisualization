@@ -13,13 +13,13 @@ RectAreaLightUniformsLib.init();
 const scene = new THREE.Scene();
 
 // Crear la cámara
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
 
 // Crear el renderizador
-const renderer = new THREE.WebGLRenderer({
+const renderer = new THREE.WebGLRenderer({ 
   canvas: document.querySelector('#bg'),
+  context: document.querySelector('#bg').getContext('webgl2')
 });
-
 
 
 // Configurar el renderizador
@@ -139,38 +139,41 @@ createSurroundingLights('Lleras', { x: 5.352, y: 0.984, z: 0.321 }, { x: 3.02, y
 createSurroundingLights('ML', { x: 0.333, y: 1.405, z: 6.735 }, { x: 4.71, y: 2.80, z: 5.38 });
 createSurroundingLights('Civico2', { x: 5.785, y: 0.664, z: 7.138 }, { x: 2.35, y: 1.38, z: 3.71 });
 
-// Function to animate the intensity of surrounding lights for a specific model
-function animateModelLightIntensity(modelName, startIntensity, endIntensity, duration) {
+
+function animateModelLightHue(modelName, startHue, endHue, duration) {
   const lights = modelLights[modelName];
   
   if (!lights) {
-    console.error(`No lights found for model: ${modelName}`);
+    console.error("No lights found for model: ${modelName}");
     return;
   }
 
   const startTime = performance.now();
 
-  function updateIntensity() {
+  function updateHue() {
     const elapsedTime = performance.now() - startTime;
     const progress = Math.min(elapsedTime / duration, 1); // Normalizes the progress
 
-    // Set the intensity for each light
+    // Calculate the current hue based on progress
+    const currentHue = startHue + (endHue - startHue) * progress;
+
+    // Update the color of each light using HSL
     lights.forEach(light => {
-      light.intensity = startIntensity + (endIntensity - startIntensity) * progress;
+      const color = new THREE.Color();
+      color.setHSL(currentHue, 1.0, 0.5); // Full saturation and medium lightness
+      light.color = color; // Update the light's color
     });
 
     if (progress < 1) {
-      requestAnimationFrame(updateIntensity);
+      requestAnimationFrame(updateHue);
     }
   }
 
-  updateIntensity();
+  updateHue();
 }
 
-// Example of how to call the animateModelLightIntensity function:
-animateModelLightIntensity('SD', 0.5, 1, 2000); // Fade in lights around 'SD' from intensity 0.5 to 2 over 2 seconds
-
-
+// Example of how to call the animateModelLightHue function:
+animateModelLightHue('ML', 0, 0.33, 20000);
 
 
 
@@ -199,7 +202,7 @@ function animateLightIntensity(light, startIntensity, endIntensity, duration) {
 
 // Controles de orbita
 const controls = new OrbitControls(camera, renderer.domElement);
-
+controls.maxPolarAngle = Math.PI / 2;
 scene.add(controls);
 
 // Inicializador
@@ -267,6 +270,33 @@ function resize() {
 
 	}
 
+}
+
+const axios = require('axios');
+
+async function fetchBuildingEntries() {
+    try {
+        const response = await axios.get('http://localhost:8000/procesar_entradas_edificio');
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error fetching building entries:', error);
+    }
+}
+
+// Llamar a la función
+fetchBuildingEntries();
+
+function calcularTono(valor, minimo = 0, maximo = 4000) {
+
+  if (valor < minimo || valor > maximo) {
+      throw new Error(`El valor debe estar entre ${minimo} y ${maximo}.`);
+  }
+
+  const proporcion = (valor - minimo) / (maximo - minimo);
+
+   const hue = 0.33 * proporcion;
+
+  return hue;
 }
 
 // expose a function to interact with react.js:

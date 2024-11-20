@@ -17,6 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.post("/procesar_entradas_edificio")
+async def process_csv():
+    data = utils.process_csv('../data/entradas_edificio_hora.csv')
+    return data
+
 @app.post("/gen_images/")
 #Data looks like this: {"data": {"Building": "ML", "Floor": 1}}
 async def visualize(data: dict = Body(...)):

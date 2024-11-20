@@ -1,12 +1,31 @@
 import pandas as pd
 import random
+import os, csv
 import cv2
+from collections import defaultdict
+
 def load_data(route):
     data =  pd.read_csv(route)
     return data
 
-import os
-import cv2
+def process_csv(file_path):
+    # Diccionario para almacenar los resultados
+    buildings = defaultdict(lambda: defaultdict(int))
+
+    # Leer el archivo CSV
+    with open(file_path, mode='r', encoding='utf-8') as file:
+        csv_reader = csv.DictReader(file)
+        
+        # Procesar cada fila
+        for row in csv_reader:
+            edificio = row['Edificio'].strip()
+            rango_horas = row['Rango de Horas'].strip()
+            entradas = int(row['Entradas'].strip())
+
+            # Sumar las entradas al rango de horas correspondiente
+            buildings[edificio][rango_horas] += entradas
+
+    return buildings
 
 def load_images(route):
     images = []
