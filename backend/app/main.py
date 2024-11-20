@@ -13,11 +13,11 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins="*",
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["*"], 
     allow_headers=["*"],
 )
 
-@app.post("/procesar_entradas_edificio")
+@app.get("/procesar_entradas_edificio")
 async def process_csv():
     data = utils.process_csv('../data/entradas_edificio_hora.csv')
     return data
