@@ -1,0 +1,11 @@
+.Modelo-container {
+	position: relative; overflow: hidden;
+
+	/* put the size you want your 3D scene to be here */
+	width: 2000px; height: 2000px; max-width: 80vw; max-height: calc(100vh - 200px);
+
+}
+
+.Modelo-container canvas {
+	position: absolute; top: 0; left: 0;
+}
