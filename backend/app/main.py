@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends, Body
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 import os, sys
 module_path = os.path.abspath(os.path.join('..', 'code'))
 if module_path not in sys.path:
@@ -26,5 +27,6 @@ async def process_csv():
 #Data looks like this: {"data": {"Building": "ML", "Floor": 1}}
 async def visualize(data: dict = Body(...)):
     print(data)
-    #utils.generate_visualization(data)
-    return {"status": "success"}
+    return FileResponse("../assets/out/0.jpg")
+    #Return an image from the ../assets/out folder
+
