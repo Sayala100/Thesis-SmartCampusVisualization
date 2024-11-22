@@ -1,41 +1,120 @@
-import React, { useState, useEffect } from 'react';
-import Edificio from './edificio';
-import Lottie from 'react-lottie-player';
+import React, { useState, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import splashAnimation from './assets/splashAnimation.json'; // Replace with your Lottie animation JSON file
+import DetailedView from './detailedView/detailedView';
 
-function App() {
-  const [loading, setLoading] = useState(true);
+const Edificio = lazy(() => import('./edificio'));
 
-  useEffect(() => {
-    // Simulate a loading process
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 4000); 
-
-    return () => clearTimeout(timer);
-  }, []);
-
+function AppContent() {
   return (
     <div className="App">
-      {/* Splash screen */}
-      {loading && (
-        <div className="splash-screen">
-          <Lottie
-            loop
-            animationData={splashAnimation}
-            play
-            style={{ width: 150, height: 150 }}
-            />
-        </div>
-      )}
-
-      {/* Main content */}
-      <header className="App-header">
-        <Edificio />
-      </header>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/hello" element={<DetailedView />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}
+
+function Main() {
+  const cantidad_pisos = {
+    ML: ["1", "2", "5", "6"],
+    LL: ["1", "2", "3"],
+    SD: ["2", "3", "4", "7", "8"],
+    RGD: ["0000", "000", "1", "2", "3"],
+  };
+
+  const [selectedBuilding, setSelectedBuilding] = useState("SD");
+  const [floors, setFloors] = useState(cantidad_pisos["SD"]);
+  const [selectedFloor, setSelectedFloor] = useState(cantidad_pisos["SD"][0]);
+
+  const handleBuildingChange = (e) => {
+    const building = e.target.value;
+    setSelectedBuilding(building);
+    setFloors(cantidad_pisos[building]);
+    setSelectedFloor(cantidad_pisos[building][0]);
+  };
+
+  const handleFloorChange = (e) => {
+    setSelectedFloor(e.target.value);
+  };
+
+  return (
+    <header className="App-header">
+      <div 
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '20px',
+          position: 'absolute', 
+          top: '20px', 
+          width: '100%',
+          zIndex: 10
+        }}
+      >
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <select
+            style={{
+              padding: '10px',
+              fontSize: '16px',
+              cursor: 'pointer',
+            }}
+            value={selectedBuilding}
+            onChange={handleBuildingChange}
+          >
+            {Object.keys(cantidad_pisos).map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+  
+          <select
+            style={{
+              padding: '10px',
+              fontSize: '16px',
+              cursor: 'pointer',
+            }}
+            value={selectedFloor}
+            onChange={handleFloorChange}
+          >
+            {floors.map((floor) => (
+              <option key={floor} value={floor}>
+                {floor}
+              </option>
+            ))}
+          </select>
+        </div>
+  
+        <button
+          style={{
+            padding: '10px 20px',
+            fontSize: '16px',
+            cursor: 'pointer',
+          }}
+          onClick={() => {
+            window.location.href = `/hello?building=${selectedBuilding}&floor=${selectedFloor}`;
+          }}
+        >
+          Go to detailed view
+        </button>
+      </div>
+      <Edificio />
+    </header>
+  );
+}
+
+
 
 export default App;
