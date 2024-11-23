@@ -80,6 +80,20 @@ floor.position.y -= 0.01;
 
 scene.add(floor);
 
+//cielo 
+const skyGeo = new THREE.SphereGeometry(500, 32, 32);
+const texture = textureLoader.load("/sky.jpg");
+const skyMaterial = new THREE.MeshPhongMaterial({
+  map: texture,
+  side: THREE.BackSide, 
+  emmisive: 0xffffff,
+  emmisiveIntensity: 0.5
+});
+
+const sky = new THREE.Mesh(skyGeo, skyMaterial);
+scene.add(sky);
+
+
 // Iluminación
 const ambientLight = new THREE.AmbientLight(0xc1c1c1, 1);
 scene.add(ambientLight);
@@ -121,7 +135,8 @@ createSurroundingLights('Entrada_Caneca', { x: -15.34, y: 0.38, z: -8.66 }, { x:
 createSurroundingLights('LL', { x: 0.06, y: 1.08, z: 2.25 }, { x: 3.04, y: 2.71, z: 2.84 });
 createSurroundingLights('ML', { x: 0.29, y: 1.12, z: 8.76 }, { x: 4.77, y: 2.24, z: 5.37 });
 createSurroundingLights('RGD', { x: 10.62, y: 0.66, z: 0.71 }, { x: 2.35, y: 1.38, z: 3.71 });
-createSurroundingLights('C', { x: -5.05, y: 0.81, z: -5.65 }, { x: 4.84, y: 1.90, z: 4.46 });
+createSurroundingLights('C', { x: -4.39, y: 1.24, z: -7.09 }, { x: 4.60, y: 2.49, z: 4.45 });
+
 
 // Actualizar colores
 async function fetchBuildingEntries() {
@@ -192,6 +207,13 @@ function animateModelLightHue(modelName, startHue, endHue, duration) {
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = Math.PI / 2 - 0.1;
 controls.maxDistance = 50;
+controls.minDistance = 10;
+controls.keys = {
+	LEFT: 'ArrowLeft', //left arrow
+	UP: 'ArrowUp', // up arrow
+	RIGHT: 'ArrowRight', // right arrow
+	BOTTOM: 'ArrowDown' // down arrow
+}
 // Animar escena
 function animate() {
   requestAnimationFrame(animate);
