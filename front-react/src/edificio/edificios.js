@@ -6,7 +6,6 @@ import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUnifo
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import axios from 'axios';
 
-
 const clockElement = document.getElementById('clock');
 // Constantes iniciales
 const START_HUES = {
@@ -22,7 +21,7 @@ RectAreaLightUniformsLib.init();
 
 // Crear escena, cámara y renderizador
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 500);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
   context: document.querySelector('#bg').getContext('webgl2'),
@@ -31,7 +30,7 @@ const renderer = new THREE.WebGLRenderer({
 // Configurar renderizador y cámara
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.set(30, 15, 30);
+camera.position.set(40, 20, 20);
 renderer.render(scene, camera);
 renderer.shadowMap.width = 512;
 renderer.shadowMap.height = 512;
@@ -39,33 +38,44 @@ renderer.shadowMap.height = 512;
 // Cargar modelos GLTF
 const loader = new GLTFLoader();
 const modelFiles = [
-  { name: 'SD', path: '/imports/SD.glb' },
-  { name: 'Entrada_Caneca', path: '/imports/Entrada_Caneca.glb' },
-  { name: 'ML', path: '/imports/ML.glb' },
-  { name: 'Lleras', path: '/imports/Lleras.glb' },
-  { name: 'Civico2', path: '/imports/Civico2.glb' },
+  { name: 'SD', path: '/imports/EdificiosSD.gltf' },
+  { name: 'Entrada_Caneca', path: '/imports/EdificiosCD.gltf' },
+  { name: 'ML', path: '/imports/EdificiosML.gltf' },
+  { name: 'Lleras', path: '/imports/EdificiosLL.gltf' },
+  { name: 'RGD', path: '/imports/EdificiosRGD.gltf' },
 ];
 
 modelFiles.forEach(({ name, path }) => {
   loader.load(
     path,
-    (gltf) => scene.add(gltf.scene),
+    (gltf) =>{
+      logModelDimensions(name, gltf.scene);
+      // if (name !== 'ML') {
+      // gltf.scene.scale.set(0.1, 0.1, 0.1);}
+      scene.add(gltf.scene)
+    },
     undefined,
     (error) => console.error(`Error loading model: ${name}`, error)
   );
 });
 
 // Crear suelo
-const floor = new THREE.Mesh(
-  new THREE.BoxGeometry(100, 1, 100),
-  new THREE.MeshStandardMaterial({ color: 0xcdcdcd })
-);
-floor.position.set(0, -0.5, 0);
-scene.add(floor);
+const floorGeometry = new THREE.PlaneGeometry( 100, 100 );
+const floorMaterial = new THREE.MeshPhongMaterial( { color: 0x999999, side: THREE.DoubleSide } );
+const floor = new THREE.Mesh( floorGeometry, floorMaterial );
+floor.rotation.x = Math.PI / 2;
+floor.receiveShadow = true;
+floor.position.y -= 0.01;
+
+scene.add( floor ); 
 
 // Iluminación
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+const ambientLight = new THREE.AmbientLight(0xc1c1c1, 1);
 scene.add(ambientLight);
+const directionalLight = new THREE.DirectionalLight(0xc1c1c1, 1); // Light color set to gray
+directionalLight.position.set(1, 1, 1).normalize(); // Direction of the light
+scene.add(directionalLight);
+
 
 // Función para crear luces alrededor de un modelo
 const modelLights = {};
@@ -80,21 +90,26 @@ function createSurroundingLights(modelName, position, dimensions) {
   };
 
   // Crear 5 luces alrededor del modelo
-  lights.push(createLight(0x55ff00, dimensions.x, dimensions.y, 0, 0, -dimensions.z / 2, [0, Math.PI, 0])); // Atrás
-  lights.push(createLight(0x55ff00, dimensions.x, dimensions.y, 0, 0, dimensions.z / 2 + 0.1)); // Frente
-  lights.push(createLight(0x55ff00, dimensions.z, dimensions.y, dimensions.x / 2, 0, 0, [0, Math.PI / 2, 0])); // Lado derecho
-  lights.push(createLight(0x55ff00, dimensions.z, dimensions.y, -dimensions.x / 2, 0, 0, [0, -Math.PI / 2, 0])); // Lado izquierdo
-  lights.push(createLight(0x55ff00, dimensions.x, dimensions.z, 0, dimensions.y / 2 + 0.1, 0, [-Math.PI / 2, 0, 0])); // Arriba
+  // Atrás
+  lights.push(createLight(0x55ff00, dimensions.x, dimensions.y, 0, 0, -dimensions.z / 2, [0, Math.PI, 0])); 
+  // Frente
+  lights.push(createLight(0x55ff00, dimensions.x, dimensions.y, 0, 0, dimensions.z / 2 + 0.1));
+  // Lado derecho
+  lights.push(createLight(0x55ff00, dimensions.z, dimensions.y, dimensions.x / 2, 0, 0, [0, Math.PI / 2, 0]));
+  // Lado izquierdo
+  lights.push(createLight(0x55ff00, dimensions.z, dimensions.y, -dimensions.x / 2, 0, 0, [0, -Math.PI / 2, 0])); 
+  // Arriba
+  lights.push(createLight(0x55ff00, dimensions.x, dimensions.z, 0, dimensions.y / 2 + 0.1, 0, [-Math.PI / 2, 0, 0])); 
 
   modelLights[modelName] = lights;
 }
 
 // Crear luces para cada modelo
-createSurroundingLights('SD', { x: 0.075, y: 1.474, z: 0 }, { x: 3.8, y: 2.92, z: 6.1 });
-createSurroundingLights('Entrada_Caneca', { x: 8.063, y: 0.380, z: 0.914 }, { x: 0.67, y: 0.62, z: 1.38 });
-createSurroundingLights('LL', { x: 5.352, y: 0.984, z: 0.321 }, { x: 3.02, y: 2.46, z: 2.84 });
-createSurroundingLights('ML', { x: 0.333, y: 1.405, z: 6.735 }, { x: 4.71, y: 2.80, z: 5.38 });
-createSurroundingLights('RGD', { x: 5.785, y: 0.664, z: 7.138 }, { x: 2.35, y: 1.38, z: 3.71 });
+createSurroundingLights('SD', { x: 12.62, y: 1.48, z: 17.52 }, { x: 3.90, y: 2.92, z: 6.03 });
+createSurroundingLights('Entrada_Caneca', { x: -15.34, y: 0.38, z: -8.66 }, { x: 0.66, y: 0.62, z: 1.38 });
+createSurroundingLights('LL', { x: 0.06, y: 1.08, z: 2.25 }, { x: 3.04, y: 2.71, z: 2.84 });
+createSurroundingLights('ML', { x: 0.29, y: 1.12, z: 8.76 }, { x: 4.77, y: 2.24, z: 5.37 });
+createSurroundingLights('RGD', { x: 10.62, y: 0.66, z: 0.71 }, { x: 2.35, y: 1.38, z: 3.71 });
 
 // Actualizar colores
 async function fetchBuildingEntries() {
@@ -106,7 +121,7 @@ async function fetchBuildingEntries() {
   }
 }
 
-function calcularTono(valor, minimo = 0, maximo = 4000) {
+function calcularTono(valor, minimo = 0, maximo = 2000) {
   const proporcion = Math.min(Math.max((maximo - valor) / (maximo - minimo), 0), 1);
   return 0.33 * proporcion;
 }
@@ -155,7 +170,7 @@ function animateModelLightHue(modelName, startHue, endHue, duration) {
     const progress = Math.min(elapsedTime / duration, 1);
     const currentHue = startHue + (endHue - startHue) * progress;
 
-    lights.forEach((light) => light.color.setHSL(currentHue, 1, 0.4));
+    lights.forEach((light) => light.color.setHSL(currentHue, 1, 0.66));
     if (progress < 1) requestAnimationFrame(updateHue);
   }
   updateHue();
@@ -164,13 +179,15 @@ function animateModelLightHue(modelName, startHue, endHue, duration) {
 // Controles de órbita
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = Math.PI / 2 - 0.1;
-
+controls.maxDistance = 50;
 // Animar escena
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
   renderer.render(scene, camera);
 }
+
+
 
 animate();
 actualizarColores();
@@ -184,3 +201,18 @@ function mount(container) {
 }
 
 export { mount };
+
+function logModelDimensions(name, object) {
+  
+  // Compute the bounding box
+  const box = new THREE.Box3().setFromObject(object);
+  const size = new THREE.Vector3();
+  const center = new THREE.Vector3();
+  box.getSize(size); // Get dimensions
+  box.getCenter(center); // Get center position
+
+  // Log dimensions and position
+  console.log(`Model: ${name}`);
+  console.log('Dimensions:', size); // Logs width, height, depth
+  console.log('Position (Center):', center); // Logs center position  
+}

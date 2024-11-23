@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function DetailedView() {
-    const [imageSrc, setImageSrc] = useState("placeholder.jpg");
+    const [imageSrc, setImageSrc] = useState("loading.svg");
   
     useEffect(() => {
       const queryParams = new URLSearchParams(window.location.search);
@@ -29,7 +29,7 @@ function DetailedView() {
         })
         .catch((error) => {
           console.error("There was a problem with the fetch operation:", error);
-          setImageSrc("error.jpg");
+          setImageSrc("error.svg");
         });
     }, []);
   
