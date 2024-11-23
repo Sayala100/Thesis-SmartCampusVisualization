@@ -43,6 +43,7 @@ const modelFiles = [
   { name: 'ML', path: '/imports/EdificiosML.gltf' },
   { name: 'Lleras', path: '/imports/EdificiosLL.gltf' },
   { name: 'RGD', path: '/imports/EdificiosRGD.gltf' },
+  { name: 'C', path: '/imports/EdificiosC.gltf' },
 ];
 
 modelFiles.forEach(({ name, path }) => {
@@ -91,15 +92,15 @@ function createSurroundingLights(modelName, position, dimensions) {
 
   // Crear 5 luces alrededor del modelo
   // Atrás
-  lights.push(createLight(0x55ff00, dimensions.x, dimensions.y, 0, 0, -dimensions.z / 2, [0, Math.PI, 0])); 
+  lights.push(createLight(0x66cc66, dimensions.x, dimensions.y, 0, 0, -dimensions.z / 2, [0, Math.PI, 0])); 
   // Frente
-  lights.push(createLight(0x55ff00, dimensions.x, dimensions.y, 0, 0, dimensions.z / 2 + 0.1));
+  lights.push(createLight(0x66cc66, dimensions.x, dimensions.y, 0, 0, dimensions.z / 2 + 0.1));
   // Lado derecho
-  lights.push(createLight(0x55ff00, dimensions.z, dimensions.y, dimensions.x / 2, 0, 0, [0, Math.PI / 2, 0]));
+  lights.push(createLight(0x66cc66, dimensions.z, dimensions.y, dimensions.x / 2, 0, 0, [0, Math.PI / 2, 0]));
   // Lado izquierdo
-  lights.push(createLight(0x55ff00, dimensions.z, dimensions.y, -dimensions.x / 2, 0, 0, [0, -Math.PI / 2, 0])); 
+  lights.push(createLight(0x66cc66, dimensions.z, dimensions.y, -dimensions.x / 2, 0, 0, [0, -Math.PI / 2, 0])); 
   // Arriba
-  lights.push(createLight(0x55ff00, dimensions.x, dimensions.z, 0, dimensions.y / 2 + 0.1, 0, [-Math.PI / 2, 0, 0])); 
+  lights.push(createLight(0x66cc66, dimensions.x, dimensions.z, 0, dimensions.y / 2 + 0.1, 0, [-Math.PI / 2, 0, 0])); 
 
   modelLights[modelName] = lights;
 }
@@ -110,6 +111,7 @@ createSurroundingLights('Entrada_Caneca', { x: -15.34, y: 0.38, z: -8.66 }, { x:
 createSurroundingLights('LL', { x: 0.06, y: 1.08, z: 2.25 }, { x: 3.04, y: 2.71, z: 2.84 });
 createSurroundingLights('ML', { x: 0.29, y: 1.12, z: 8.76 }, { x: 4.77, y: 2.24, z: 5.37 });
 createSurroundingLights('RGD', { x: 10.62, y: 0.66, z: 0.71 }, { x: 2.35, y: 1.38, z: 3.71 });
+createSurroundingLights('C', { x: -5.05, y: 0.81, z: -5.65 }, { x: 4.84, y: 1.90, z: 4.46 });
 
 // Actualizar colores
 async function fetchBuildingEntries() {
