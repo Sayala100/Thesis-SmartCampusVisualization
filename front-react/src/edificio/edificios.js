@@ -60,15 +60,25 @@ modelFiles.forEach(({ name, path }) => {
   );
 });
 
-// Crear suelo
-const floorGeometry = new THREE.PlaneGeometry( 100, 100 );
-const floorMaterial = new THREE.MeshPhongMaterial( { color: 0x999999, side: THREE.DoubleSide } );
-const floor = new THREE.Mesh( floorGeometry, floorMaterial );
+const floorGeometry = new THREE.PlaneGeometry(100, 100);
+
+const textureLoader = new THREE.TextureLoader();
+const floorTexture = textureLoader.load('/bg.png'); // Replace with the path to your image
+
+floorTexture.flipY = false;
+
+const floorMaterial = new THREE.MeshPhongMaterial({
+  map: floorTexture,  // Set the texture as the map
+  side: THREE.DoubleSide
+});
+
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+
 floor.rotation.x = Math.PI / 2;
 floor.receiveShadow = true;
 floor.position.y -= 0.01;
 
-scene.add( floor ); 
+scene.add(floor);
 
 // Iluminación
 const ambientLight = new THREE.AmbientLight(0xc1c1c1, 1);
