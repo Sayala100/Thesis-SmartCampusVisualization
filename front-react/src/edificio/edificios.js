@@ -46,6 +46,7 @@ const modelFiles = [
   { name: 'C', path: '/imports/EdificiosC.gltf' },
   { name: 'TX', path: '/imports/EdificiosTX.gltf' },
   { name: 'TrashCan', path: '/imports/EdificiosTrashCan.gltf' },
+  { name: 'Aulas', path: '/imports/EdificiosAulas.gltf' },
 ];
 
 modelFiles.forEach(({ name, path }) => {
@@ -53,8 +54,6 @@ modelFiles.forEach(({ name, path }) => {
     path,
     (gltf) =>{
       logModelDimensions(name, gltf.scene);
-      // if (name !== 'ML') {
-      // gltf.scene.scale.set(0.1, 0.1, 0.1);}
       scene.add(gltf.scene)
     },
     undefined,
@@ -137,9 +136,10 @@ createSurroundingLights('Entrada_Caneca', { x: -15.34, y: 0.38, z: -3.85 }, { x:
 createSurroundingLights('LL', { x: 0.06, y: 1.08, z: 2.25 }, { x: 3.04, y: 2.71, z: 2.84 });
 createSurroundingLights('ML', { x: 0.29, y: 1.12, z: 8.76 }, { x: 4.77, y: 2.24, z: 5.37 });
 createSurroundingLights('RGD', { x: 10.62, y: 0.66, z: 0.71 }, { x: 2.35, y: 1.38, z: 3.71 });
-createSurroundingLights('C', { x: -4.39, y: 1.24, z: -7.09 }, { x: 4.60, y: 2.49, z: 4.45 });
+createSurroundingLights('C', { x: -4.39, y: 1.22, z: -4.90 }, { x: 4.60, y: 2.53, z: 4.45 });
 createSurroundingLights('TX', { x: -9.78, y: 1.74, z: 1.81 }, { x: 3.79, y: 3.19, z: 3.35 });
 createSurroundingLights('TrashCan', { x: -29.88, y: 1.67, z: 6.06 }, { x: 10.57, y: 3.38, z: 7.91 });
+createSurroundingLights('Aulas', { x: 22.46, y: 1.15, z: 0.72 }, { x: 9.91, y: 2.29, z: 3.92 });
 
 
 // Actualizar colores

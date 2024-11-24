@@ -1299,6 +1299,7 @@
         {
             "name": "Divisiones_blancas",
             "children": [
+                100,
                 99,
                 98,
                 97,
@@ -1862,6 +1863,20 @@
             "scale": [
                 129.84886169433598,
                 3.3924720287323,
+                278.4336853027344
+            ]
+        },
+        {
+            "name": "Divisiones_blancas7",
+            "mesh": 93,
+            "translation": [
+                485.1687927246094,
+                169.10121154785157,
+                31.74551773071289
+            ],
+            "scale": [
+                202.3111114501953,
+                0.02529612183570862,
                 278.4336853027344
             ]
         }
@@ -3631,6 +3646,25 @@
                     "indices": 460,
                     "mode": 4,
                     "material": 1
+                }
+            ]
+        },
+        {
+            "name": "Divisiones_blancas7Shape",
+            "extras": {
+                "targetNames": []
+            },
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 466,
+                        "POSITION": 467,
+                        "TANGENT": 468,
+                        "TEXCOORD_0": 469
+                    },
+                    "indices": 465,
+                    "mode": 4,
+                    "material": 0
                 }
             ]
         }
@@ -11651,21 +11685,107 @@
                 0.0
             ],
             "type": "VEC2"
+        },
+        {
+            "name": "Divisiones_blancas7Shape#0/indices",
+            "bufferView": 0,
+            "byteOffset": 6696,
+            "componentType": 5123,
+            "count": 36,
+            "max": [
+                23
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        },
+        {
+            "name": "Divisiones_blancas7Shape#0/vertices/NORMAL",
+            "bufferView": 1,
+            "byteOffset": 53568,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                0.9999999403953552,
+                1.0,
+                1.0
+            ],
+            "min": [
+                -0.9999999403953552,
+                -1.0,
+                -1.0
+            ],
+            "type": "VEC3"
+        },
+        {
+            "name": "Divisiones_blancas7Shape#0/vertices/POSITION",
+            "bufferView": 1,
+            "byteOffset": 53856,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "min": [
+                -0.5,
+                -0.5,
+                -0.5
+            ],
+            "type": "VEC3"
+        },
+        {
+            "name": "Divisiones_blancas7Shape#0/vertices/TANGENT",
+            "bufferView": 2,
+            "byteOffset": 35712,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                0.9999999403953552,
+                0.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                0.0,
+                0.0,
+                -1.0,
+                1.0
+            ],
+            "type": "VEC4"
+        },
+        {
+            "name": "Divisiones_blancas7Shape#0/vertices/TEXCOORD_0",
+            "bufferView": 3,
+            "byteOffset": 17856,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                0.875,
+                1.0
+            ],
+            "min": [
+                0.125,
+                0.0
+            ],
+            "type": "VEC2"
         }
     ],
     "bufferViews": [
         {
             "name": "EdificiosLL/data/indices-2",
             "buffer": 0,
-            "byteOffset": 107136,
-            "byteLength": 6696,
+            "byteOffset": 108288,
+            "byteLength": 6768,
             "target": 34963
         },
         {
             "name": "EdificiosLL/data/vertices-12",
             "buffer": 0,
-            "byteOffset": 35712,
-            "byteLength": 53568,
+            "byteOffset": 36096,
+            "byteLength": 54144,
             "byteStride": 12,
             "target": 34962
         },
@@ -11673,15 +11793,15 @@
             "name": "EdificiosLL/data/vertices-16",
             "buffer": 0,
             "byteOffset": 0,
-            "byteLength": 35712,
+            "byteLength": 36096,
             "byteStride": 16,
             "target": 34962
         },
         {
             "name": "EdificiosLL/data/vertices-8",
             "buffer": 0,
-            "byteOffset": 89280,
-            "byteLength": 17856,
+            "byteOffset": 90240,
+            "byteLength": 18048,
             "byteStride": 8,
             "target": 34962
         }
@@ -11689,7 +11809,7 @@
     "buffers": [
         {
             "name": "EdificiosLL/data",
-            "byteLength": 113832,
+            "byteLength": 115056,
             "uri": "EdificiosLL0.bin"
         }
     ]
