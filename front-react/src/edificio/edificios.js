@@ -44,6 +44,7 @@ const modelFiles = [
   { name: 'Lleras', path: '/imports/EdificiosLL.gltf' },
   { name: 'RGD', path: '/imports/EdificiosRGD.gltf' },
   { name: 'C', path: '/imports/EdificiosC.gltf' },
+  { name: 'TX', path: '/imports/EdificiosTX.gltf' },
 ];
 
 modelFiles.forEach(({ name, path }) => {
@@ -136,6 +137,7 @@ createSurroundingLights('LL', { x: 0.06, y: 1.08, z: 2.25 }, { x: 3.04, y: 2.71,
 createSurroundingLights('ML', { x: 0.29, y: 1.12, z: 8.76 }, { x: 4.77, y: 2.24, z: 5.37 });
 createSurroundingLights('RGD', { x: 10.62, y: 0.66, z: 0.71 }, { x: 2.35, y: 1.38, z: 3.71 });
 createSurroundingLights('C', { x: -4.39, y: 1.24, z: -7.09 }, { x: 4.60, y: 2.49, z: 4.45 });
+createSurroundingLights('TX', { x: -9.78, y: 1.74, z: 1.81 }, { x: 3.79, y: 3.19, z: 3.35 });
 
 
 // Actualizar colores
