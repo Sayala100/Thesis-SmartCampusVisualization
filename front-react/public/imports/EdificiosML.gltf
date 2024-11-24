@@ -9690,7 +9690,7 @@
                     },
                     "indices": 895,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -10032,7 +10032,7 @@
                     },
                     "indices": 985,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -10374,7 +10374,7 @@
                     },
                     "indices": 1075,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -10716,7 +10716,7 @@
                     },
                     "indices": 1165,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
