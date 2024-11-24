@@ -47,6 +47,7 @@ const modelFiles = [
   { name: 'TX', path: '/imports/EdificiosTX.gltf' },
   { name: 'TrashCan', path: '/imports/EdificiosTrashCan.gltf' },
   { name: 'Aulas', path: '/imports/EdificiosAulas.gltf' },
+  { name: 'O', path: '/imports/EdificiosO.gltf' },
 ];
 
 modelFiles.forEach(({ name, path }) => {
@@ -140,7 +141,7 @@ createSurroundingLights('C', { x: -4.39, y: 1.22, z: -4.90 }, { x: 4.60, y: 2.53
 createSurroundingLights('TX', { x: -9.78, y: 1.74, z: 1.81 }, { x: 3.79, y: 3.19, z: 3.35 });
 createSurroundingLights('TrashCan', { x: -29.88, y: 1.67, z: 6.06 }, { x: 10.57, y: 3.38, z: 7.91 });
 createSurroundingLights('Aulas', { x: 22.46, y: 1.15, z: 0.72 }, { x: 9.91, y: 2.29, z: 3.92 });
-
+createSurroundingLights('O', { x: -12.92, y: 0.49, z: -13.14 }, { x: 1.59, y: 1.10, z: 6.21 });
 
 // Actualizar colores
 async function fetchBuildingEntries() {
