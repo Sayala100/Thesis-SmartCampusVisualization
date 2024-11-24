@@ -210,7 +210,7 @@ function animateModelLightHue(modelName, startHue, endHue, duration) {
 // Controles de órbita
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = Math.PI / 2 - 0.1;
-controls.maxDistance = 50;
+controls.maxDistance = 70;
 controls.minDistance = 10;
 controls.keys = {
 	LEFT: 'ArrowLeft', //left arrow
