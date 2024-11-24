@@ -1440,9 +1440,9 @@
                 31.74551773071289
             ],
             "scale": [
-                37.18636322021485,
+                37.91598510742188,
                 57.605674743652347,
-                278.4336853027344
+                267.7747497558594
             ]
         },
         {
@@ -2053,7 +2053,7 @@
                     },
                     "indices": 45,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2072,7 +2072,7 @@
                     },
                     "indices": 50,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2091,7 +2091,7 @@
                     },
                     "indices": 55,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2110,7 +2110,7 @@
                     },
                     "indices": 60,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2129,7 +2129,7 @@
                     },
                     "indices": 65,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2148,7 +2148,7 @@
                     },
                     "indices": 70,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2167,7 +2167,7 @@
                     },
                     "indices": 75,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2186,7 +2186,7 @@
                     },
                     "indices": 80,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2205,7 +2205,7 @@
                     },
                     "indices": 85,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2224,7 +2224,7 @@
                     },
                     "indices": 90,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2243,7 +2243,7 @@
                     },
                     "indices": 95,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2262,7 +2262,7 @@
                     },
                     "indices": 100,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2281,7 +2281,7 @@
                     },
                     "indices": 105,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2300,7 +2300,7 @@
                     },
                     "indices": 110,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2319,7 +2319,7 @@
                     },
                     "indices": 115,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2338,7 +2338,7 @@
                     },
                     "indices": 120,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2357,7 +2357,7 @@
                     },
                     "indices": 125,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2376,7 +2376,7 @@
                     },
                     "indices": 130,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2395,7 +2395,7 @@
                     },
                     "indices": 135,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2414,7 +2414,7 @@
                     },
                     "indices": 140,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2433,7 +2433,7 @@
                     },
                     "indices": 145,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2452,7 +2452,7 @@
                     },
                     "indices": 150,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2471,7 +2471,7 @@
                     },
                     "indices": 155,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2490,7 +2490,7 @@
                     },
                     "indices": 160,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2509,7 +2509,7 @@
                     },
                     "indices": 165,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2528,7 +2528,7 @@
                     },
                     "indices": 170,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2547,7 +2547,7 @@
                     },
                     "indices": 175,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2566,7 +2566,7 @@
                     },
                     "indices": 180,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2585,7 +2585,7 @@
                     },
                     "indices": 185,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2604,7 +2604,7 @@
                     },
                     "indices": 190,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2623,7 +2623,7 @@
                     },
                     "indices": 195,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2642,7 +2642,7 @@
                     },
                     "indices": 200,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2661,7 +2661,7 @@
                     },
                     "indices": 205,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2680,7 +2680,7 @@
                     },
                     "indices": 210,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2699,7 +2699,7 @@
                     },
                     "indices": 215,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2718,7 +2718,7 @@
                     },
                     "indices": 220,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2737,7 +2737,7 @@
                     },
                     "indices": 225,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2756,7 +2756,7 @@
                     },
                     "indices": 230,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2775,7 +2775,7 @@
                     },
                     "indices": 235,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2794,7 +2794,7 @@
                     },
                     "indices": 240,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2813,7 +2813,7 @@
                     },
                     "indices": 245,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2832,7 +2832,7 @@
                     },
                     "indices": 250,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2851,7 +2851,7 @@
                     },
                     "indices": 255,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2870,7 +2870,7 @@
                     },
                     "indices": 260,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2889,7 +2889,7 @@
                     },
                     "indices": 265,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2908,7 +2908,7 @@
                     },
                     "indices": 270,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2927,7 +2927,7 @@
                     },
                     "indices": 275,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2946,7 +2946,7 @@
                     },
                     "indices": 280,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2965,7 +2965,7 @@
                     },
                     "indices": 285,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -2984,7 +2984,7 @@
                     },
                     "indices": 290,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -3003,7 +3003,7 @@
                     },
                     "indices": 295,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -3022,7 +3022,7 @@
                     },
                     "indices": 300,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -3041,7 +3041,7 @@
                     },
                     "indices": 305,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3060,7 +3060,7 @@
                     },
                     "indices": 310,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3079,7 +3079,7 @@
                     },
                     "indices": 315,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3098,7 +3098,7 @@
                     },
                     "indices": 320,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3117,7 +3117,7 @@
                     },
                     "indices": 325,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3136,7 +3136,7 @@
                     },
                     "indices": 330,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3155,7 +3155,7 @@
                     },
                     "indices": 335,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3174,7 +3174,7 @@
                     },
                     "indices": 340,
                     "mode": 4,
-                    "material": 2
+                    "material": 0
                 }
             ]
         },
@@ -3193,7 +3193,7 @@
                     },
                     "indices": 345,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3212,7 +3212,7 @@
                     },
                     "indices": 350,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3231,7 +3231,7 @@
                     },
                     "indices": 355,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3250,7 +3250,7 @@
                     },
                     "indices": 360,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3269,7 +3269,7 @@
                     },
                     "indices": 365,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3288,7 +3288,7 @@
                     },
                     "indices": 370,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3307,7 +3307,7 @@
                     },
                     "indices": 375,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3326,7 +3326,7 @@
                     },
                     "indices": 380,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3345,7 +3345,7 @@
                     },
                     "indices": 385,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3364,7 +3364,7 @@
                     },
                     "indices": 390,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3383,7 +3383,7 @@
                     },
                     "indices": 395,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3402,7 +3402,7 @@
                     },
                     "indices": 400,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3421,7 +3421,7 @@
                     },
                     "indices": 405,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3440,7 +3440,7 @@
                     },
                     "indices": 410,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3459,7 +3459,7 @@
                     },
                     "indices": 415,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3478,7 +3478,7 @@
                     },
                     "indices": 420,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3497,7 +3497,7 @@
                     },
                     "indices": 425,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3516,7 +3516,7 @@
                     },
                     "indices": 430,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3535,7 +3535,7 @@
                     },
                     "indices": 435,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3554,7 +3554,7 @@
                     },
                     "indices": 440,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3573,7 +3573,7 @@
                     },
                     "indices": 445,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3592,7 +3592,7 @@
                     },
                     "indices": 450,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         },
@@ -3611,7 +3611,7 @@
                     },
                     "indices": 455,
                     "mode": 4,
-                    "material": 2
+                    "material": 0
                 }
             ]
         },
@@ -3630,7 +3630,7 @@
                     },
                     "indices": 460,
                     "mode": 4,
-                    "material": 2
+                    "material": 1
                 }
             ]
         }
@@ -3640,10 +3640,17 @@
             "pbrMetallicRoughness": {}
         },
         {
-            "pbrMetallicRoughness": {}
-        },
-        {
-            "pbrMetallicRoughness": {}
+            "name": "blinn1",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.08560000360012055,
+                    0.08560000360012055,
+                    0.08560000360012055,
+                    1.0
+                ],
+                "metallicFactor": 0.0,
+                "roughnessFactor": 1.0
+            }
         }
     ],
     "accessors": [
@@ -9516,14 +9523,14 @@
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
                 1.0,
-                1.0
+                1.0,
+                0.9999999403953552
             ],
             "min": [
-                -0.9999999403953552,
                 -1.0,
-                -1.0
+                -1.0,
+                -0.9999999403953552
             ],
             "type": "VEC3"
         },
@@ -9552,15 +9559,15 @@
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
-                0.0,
                 1.0,
+                0.0,
+                0.9999999403953552,
                 1.0
             ],
             "min": [
                 0.0,
                 0.0,
-                -1.0,
+                -0.9999999403953552,
                 1.0
             ],
             "type": "VEC4"
