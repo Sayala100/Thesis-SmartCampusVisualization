@@ -27,8 +27,23 @@
         {
             "name": "Aulas",
             "children": [
-                24,
-                23,
+                2
+            ],
+            "translation": [
+                1660.2607421875,
+                40.47672271728516,
+                0.0
+            ],
+            "scale": [
+                49.83584594726563,
+                62.397342681884769,
+                100.0
+            ]
+        },
+        {
+            "name": "Aulas:PIV",
+            "children": [
+                27,
                 22,
                 21,
                 20,
@@ -48,72 +63,17 @@
                 6,
                 5,
                 4,
-                3,
-                2
+                3
             ],
-            "scale": [
-                100.0,
-                100.0,
-                100.0
-            ]
-        },
-        {
-            "name": "pSphere2",
-            "mesh": 0,
             "translation": [
-                20.23987197875977,
-                1.1520164012908936,
-                -1.2364139556884766
-            ],
-            "rotation": [
-                0.7071067690849304,
-                0.0,
-                -0.7071067690849304,
+                -23.650508880615236,
+                -0.6570833921432495,
                 0.0
-            ],
-            "scale": [
-                3.866865158081055,
-                0.000009192999641527422,
-                -7.174777030944824
-            ]
-        },
-        {
-            "name": "pSphere1",
-            "mesh": 1,
-            "translation": [
-                20.23987197875977,
-                0.5835542678833008,
-                -1.2364139556884766
-            ],
-            "rotation": [
-                0.7071067690849304,
-                0.0,
-                -0.7071067690849304,
-                0.0
-            ],
-            "scale": [
-                3.866865158081055,
-                0.0019823070615530016,
-                -7.174777030944824
-            ]
-        },
-        {
-            "name": "pCube348",
-            "mesh": 2,
-            "translation": [
-                23.82263565063477,
-                0.5712011456489563,
-                -1.2432684898376465
-            ],
-            "scale": [
-                7.194698810577393,
-                1.1434695720672608,
-                -0.004371965769678354
             ]
         },
         {
             "name": "pCube347",
-            "mesh": 3,
+            "mesh": 0,
             "translation": [
                 19.775238037109376,
                 0.21020592749118809,
@@ -133,7 +93,7 @@
         },
         {
             "name": "pCube346",
-            "mesh": 4,
+            "mesh": 1,
             "translation": [
                 18.52407455444336,
                 0.1987707167863846,
@@ -147,7 +107,7 @@
         },
         {
             "name": "pCube345",
-            "mesh": 5,
+            "mesh": 2,
             "translation": [
                 19.373733520507817,
                 0.7301928400993347,
@@ -167,7 +127,7 @@
         },
         {
             "name": "pCube344",
-            "mesh": 6,
+            "mesh": 3,
             "translation": [
                 19.373733520507817,
                 1.1835945844650269,
@@ -187,7 +147,7 @@
         },
         {
             "name": "pCube343",
-            "mesh": 7,
+            "mesh": 4,
             "translation": [
                 18.52407455444336,
                 0.7301928400993347,
@@ -201,7 +161,7 @@
         },
         {
             "name": "pCube342",
-            "mesh": 8,
+            "mesh": 5,
             "translation": [
                 18.52407455444336,
                 1.1835945844650269,
@@ -215,7 +175,7 @@
         },
         {
             "name": "pCube341",
-            "mesh": 9,
+            "mesh": 6,
             "translation": [
                 20.09796905517578,
                 0.6757634878158569,
@@ -229,7 +189,7 @@
         },
         {
             "name": "pCube340",
-            "mesh": 10,
+            "mesh": 7,
             "translation": [
                 19.140443801879884,
                 0.8770018815994263,
@@ -243,7 +203,7 @@
         },
         {
             "name": "pCube339",
-            "mesh": 11,
+            "mesh": 8,
             "translation": [
                 18.18279266357422,
                 1.6798744201660157,
@@ -257,7 +217,7 @@
         },
         {
             "name": "pCube338",
-            "mesh": 12,
+            "mesh": 9,
             "translation": [
                 20.907024383544927,
                 1.4301038980484009,
@@ -271,7 +231,7 @@
         },
         {
             "name": "pCube323",
-            "mesh": 13,
+            "mesh": 10,
             "translation": [
                 18.188430786132817,
                 0.7575536370277405,
@@ -285,7 +245,7 @@
         },
         {
             "name": "pCube322",
-            "mesh": 14,
+            "mesh": 11,
             "translation": [
                 17.88396644592285,
                 0.3672122359275818,
@@ -299,7 +259,7 @@
         },
         {
             "name": "pCube321",
-            "mesh": 15,
+            "mesh": 12,
             "translation": [
                 18.27593994140625,
                 1.1526809930801392,
@@ -313,7 +273,7 @@
         },
         {
             "name": "pCube320",
-            "mesh": 16,
+            "mesh": 13,
             "translation": [
                 20.25482749938965,
                 0.8717043995857239,
@@ -327,7 +287,7 @@
         },
         {
             "name": "pCube319",
-            "mesh": 17,
+            "mesh": 14,
             "translation": [
                 19.71821784973145,
                 1.4315857887268069,
@@ -341,7 +301,7 @@
         },
         {
             "name": "pCube318",
-            "mesh": 18,
+            "mesh": 15,
             "translation": [
                 19.35305404663086,
                 0.9867704510688782,
@@ -355,7 +315,7 @@
         },
         {
             "name": "pCube317",
-            "mesh": 19,
+            "mesh": 16,
             "translation": [
                 19.334423065185548,
                 0.4846064746379853,
@@ -369,7 +329,7 @@
         },
         {
             "name": "pCube316",
-            "mesh": 20,
+            "mesh": 17,
             "translation": [
                 19.35305404663086,
                 0.4571902751922608,
@@ -383,7 +343,7 @@
         },
         {
             "name": "pCube315",
-            "mesh": 21,
+            "mesh": 18,
             "translation": [
                 18.56343650817871,
                 0.4206249713897705,
@@ -396,19 +356,97 @@
             ]
         },
         {
+            "name": "ExtraAulas",
+            "children": [
+                23
+            ],
+            "translation": [
+                22.978652954101564,
+                0.7250058054924011,
+                0.31202006340026858
+            ]
+        },
+        {
+            "name": "ExtraAulas:PIV",
+            "children": [
+                26,
+                25,
+                24
+            ],
+            "translation": [
+                -22.978652954101564,
+                -0.7250058054924011,
+                -0.31202006340026858
+            ]
+        },
+        {
+            "name": "pSphere2",
+            "mesh": 19,
+            "translation": [
+                20.23987197875977,
+                1.1520164012908936,
+                -1.2364139556884766
+            ],
+            "rotation": [
+                0.7071067690849304,
+                0.0,
+                -0.7071067690849304,
+                0.0
+            ],
+            "scale": [
+                3.866865158081055,
+                0.000009192999641527422,
+                -7.174777030944824
+            ]
+        },
+        {
+            "name": "pSphere1",
+            "mesh": 20,
+            "translation": [
+                20.23987197875977,
+                0.5835542678833008,
+                -1.2364139556884766
+            ],
+            "rotation": [
+                0.7071067690849304,
+                0.0,
+                -0.7071067690849304,
+                0.0
+            ],
+            "scale": [
+                3.866865158081055,
+                0.0019823070615530016,
+                -7.174777030944824
+            ]
+        },
+        {
+            "name": "pCube348",
+            "mesh": 21,
+            "translation": [
+                23.82263565063477,
+                0.5712011456489563,
+                -1.2432684898376465
+            ],
+            "scale": [
+                7.194698810577393,
+                1.1434695720672608,
+                -0.004371965769678354
+            ]
+        },
+        {
             "name": "Brazos",
             "children": [
-                41,
-                37,
-                33,
-                29,
-                25
+                44,
+                40,
+                36,
+                32,
+                28
             ]
         },
         {
             "name": "Brazo_aulas",
             "children": [
-                26
+                29
             ],
             "translation": [
                 34.26708984375,
@@ -419,8 +457,8 @@
         {
             "name": "Brazo_aulas:PIV",
             "children": [
-                28,
-                27
+                31,
+                30
             ],
             "translation": [
                 -34.26708984375,
@@ -459,7 +497,7 @@
         {
             "name": "Brazo_aulas4",
             "children": [
-                30
+                33
             ],
             "translation": [
                 34.26708984375,
@@ -470,8 +508,8 @@
         {
             "name": "Brazo_aulas4:PIV",
             "children": [
-                32,
-                31
+                35,
+                34
             ],
             "translation": [
                 -34.26708984375,
@@ -510,7 +548,7 @@
         {
             "name": "Brazo_aulas3",
             "children": [
-                34
+                37
             ],
             "translation": [
                 34.26708984375,
@@ -521,8 +559,8 @@
         {
             "name": "Brazo_aulas3:PIV",
             "children": [
-                36,
-                35
+                39,
+                38
             ],
             "translation": [
                 -34.26708984375,
@@ -561,7 +599,7 @@
         {
             "name": "Brazo_aulas2",
             "children": [
-                38
+                41
             ],
             "translation": [
                 34.26708984375,
@@ -572,8 +610,8 @@
         {
             "name": "Brazo_aulas2:PIV",
             "children": [
-                40,
-                39
+                43,
+                42
             ],
             "translation": [
                 -34.26708984375,
@@ -612,7 +650,7 @@
         {
             "name": "Brazo_aulas1",
             "children": [
-                42
+                45
             ],
             "translation": [
                 34.26708984375,
@@ -623,8 +661,8 @@
         {
             "name": "Brazo_aulas1:PIV",
             "children": [
-                44,
-                43
+                47,
+                46
             ],
             "translation": [
                 -34.26708984375,
@@ -663,7 +701,7 @@
     ],
     "meshes": [
         {
-            "name": "pSphereShape2",
+            "name": "pCubeShape347",
             "extras": {
                 "targetNames": []
             },
@@ -682,7 +720,7 @@
             ]
         },
         {
-            "name": "pSphereShape1",
+            "name": "pCubeShape346",
             "extras": {
                 "targetNames": []
             },
@@ -696,12 +734,12 @@
                     },
                     "indices": 5,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape348",
+            "name": "pCubeShape345",
             "extras": {
                 "targetNames": []
             },
@@ -715,12 +753,12 @@
                     },
                     "indices": 10,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape347",
+            "name": "pCubeShape344",
             "extras": {
                 "targetNames": []
             },
@@ -734,12 +772,12 @@
                     },
                     "indices": 15,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape346",
+            "name": "pCubeShape343",
             "extras": {
                 "targetNames": []
             },
@@ -753,12 +791,12 @@
                     },
                     "indices": 20,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape345",
+            "name": "pCubeShape342",
             "extras": {
                 "targetNames": []
             },
@@ -772,12 +810,12 @@
                     },
                     "indices": 25,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape344",
+            "name": "pCubeShape341",
             "extras": {
                 "targetNames": []
             },
@@ -791,12 +829,12 @@
                     },
                     "indices": 30,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape343",
+            "name": "pCubeShape340",
             "extras": {
                 "targetNames": []
             },
@@ -810,12 +848,12 @@
                     },
                     "indices": 35,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape342",
+            "name": "pCubeShape339",
             "extras": {
                 "targetNames": []
             },
@@ -829,12 +867,12 @@
                     },
                     "indices": 40,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape341",
+            "name": "pCubeShape338",
             "extras": {
                 "targetNames": []
             },
@@ -848,12 +886,12 @@
                     },
                     "indices": 45,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape340",
+            "name": "pCubeShape323",
             "extras": {
                 "targetNames": []
             },
@@ -867,12 +905,12 @@
                     },
                     "indices": 50,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape339",
+            "name": "pCubeShape322",
             "extras": {
                 "targetNames": []
             },
@@ -886,12 +924,12 @@
                     },
                     "indices": 55,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape338",
+            "name": "pCubeShape321",
             "extras": {
                 "targetNames": []
             },
@@ -905,12 +943,12 @@
                     },
                     "indices": 60,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape323",
+            "name": "pCubeShape320",
             "extras": {
                 "targetNames": []
             },
@@ -924,12 +962,12 @@
                     },
                     "indices": 65,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape322",
+            "name": "pCubeShape319",
             "extras": {
                 "targetNames": []
             },
@@ -943,12 +981,12 @@
                     },
                     "indices": 70,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape321",
+            "name": "pCubeShape318",
             "extras": {
                 "targetNames": []
             },
@@ -962,12 +1000,12 @@
                     },
                     "indices": 75,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape320",
+            "name": "pCubeShape317",
             "extras": {
                 "targetNames": []
             },
@@ -981,12 +1019,12 @@
                     },
                     "indices": 80,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape319",
+            "name": "pCubeShape316",
             "extras": {
                 "targetNames": []
             },
@@ -1000,12 +1038,12 @@
                     },
                     "indices": 85,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape318",
+            "name": "pCubeShape315",
             "extras": {
                 "targetNames": []
             },
@@ -1019,12 +1057,12 @@
                     },
                     "indices": 90,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape317",
+            "name": "pSphereShape2",
             "extras": {
                 "targetNames": []
             },
@@ -1043,7 +1081,7 @@
             ]
         },
         {
-            "name": "pCubeShape316",
+            "name": "pSphereShape1",
             "extras": {
                 "targetNames": []
             },
@@ -1057,12 +1095,12 @@
                     },
                     "indices": 100,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
         {
-            "name": "pCubeShape315",
+            "name": "pCubeShape348",
             "extras": {
                 "targetNames": []
             },
@@ -1076,7 +1114,7 @@
                     },
                     "indices": 105,
                     "mode": 4,
-                    "material": 1
+                    "material": 0
                 }
             ]
         },
@@ -1095,7 +1133,7 @@
                     },
                     "indices": 110,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1114,7 +1152,7 @@
                     },
                     "indices": 115,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1133,7 +1171,7 @@
                     },
                     "indices": 120,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1152,7 +1190,7 @@
                     },
                     "indices": 125,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1171,7 +1209,7 @@
                     },
                     "indices": 130,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1190,7 +1228,7 @@
                     },
                     "indices": 135,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1209,7 +1247,7 @@
                     },
                     "indices": 140,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1228,7 +1266,7 @@
                     },
                     "indices": 145,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1247,7 +1285,7 @@
                     },
                     "indices": 150,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         },
@@ -1266,15 +1304,12 @@
                     },
                     "indices": 155,
                     "mode": 4,
-                    "material": 0
+                    "material": 1
                 }
             ]
         }
     ],
     "materials": [
-        {
-            "pbrMetallicRoughness": {}
-        },
         {
             "name": "blinn1",
             "pbrMetallicRoughness": {
@@ -1287,271 +1322,16 @@
                 "metallicFactor": 0.0,
                 "roughnessFactor": 1.0
             }
+        },
+        {
+            "pbrMetallicRoughness": {}
         }
     ],
     "accessors": [
         {
-            "name": "pSphereShape2#0/indices",
-            "bufferView": 0,
-            "byteOffset": 0,
-            "componentType": 5123,
-            "count": 94170,
-            "max": [
-                32358
-            ],
-            "min": [
-                0
-            ],
-            "type": "SCALAR"
-        },
-        {
-            "name": "pSphereShape2#0/vertices/NORMAL",
-            "bufferView": 1,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 32359,
-            "max": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "min": [
-                -0.9594293236732484,
-                -1.0,
-                -0.996376097202301
-            ],
-            "type": "VEC3"
-        },
-        {
-            "name": "pSphereShape2#0/vertices/POSITION",
-            "bufferView": 1,
-            "byteOffset": 388308,
-            "componentType": 5126,
-            "count": 32359,
-            "max": [
-                0.00042629201197996736,
-                281.0461120605469,
-                1.0
-            ],
-            "min": [
-                -1.000000238418579,
-                -281.0461120605469,
-                -0.00012445400352589786
-            ],
-            "type": "VEC3"
-        },
-        {
-            "name": "pSphereShape2#0/vertices/TANGENT",
-            "bufferView": 2,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 32359,
-            "max": [
-                0.9594318866729736,
-                1.0,
-                0.9963765740394592,
-                1.0
-            ],
-            "min": [
-                -0.9594292044639589,
-                -1.0,
-                -0.9963765740394592,
-                1.0
-            ],
-            "type": "VEC4"
-        },
-        {
-            "name": "pSphereShape2#0/vertices/TEXCOORD_0",
-            "bufferView": 3,
-            "byteOffset": 0,
-            "componentType": 5126,
-            "count": 32359,
-            "max": [
-                0.7000001072883606,
-                1.0
-            ],
-            "min": [
-                0.4500000476837158,
-                0.0
-            ],
-            "type": "VEC2"
-        },
-        {
-            "name": "pSphereShape1#0/indices",
-            "bufferView": 0,
-            "byteOffset": 188340,
-            "componentType": 5123,
-            "count": 94170,
-            "max": [
-                32358
-            ],
-            "min": [
-                0
-            ],
-            "type": "SCALAR"
-        },
-        {
-            "name": "pSphereShape1#0/vertices/NORMAL",
-            "bufferView": 1,
-            "byteOffset": 776616,
-            "componentType": 5126,
-            "count": 32359,
-            "max": [
-                1.0,
-                1.0,
-                1.0
-            ],
-            "min": [
-                -0.959431290626526,
-                -1.0,
-                -0.996376931667328
-            ],
-            "type": "VEC3"
-        },
-        {
-            "name": "pSphereShape1#0/vertices/POSITION",
-            "bufferView": 1,
-            "byteOffset": 1164924,
-            "componentType": 5126,
-            "count": 32359,
-            "max": [
-                0.00042629201197996736,
-                281.0461120605469,
-                1.0
-            ],
-            "min": [
-                -1.000000238418579,
-                -281.0461120605469,
-                -0.00012445400352589786
-            ],
-            "type": "VEC3"
-        },
-        {
-            "name": "pSphereShape1#0/vertices/TANGENT",
-            "bufferView": 2,
-            "byteOffset": 517744,
-            "componentType": 5126,
-            "count": 32359,
-            "max": [
-                0.9594337344169616,
-                1.0,
-                0.9963765740394592,
-                1.0
-            ],
-            "min": [
-                -0.9594292044639589,
-                -1.0,
-                -0.9963765740394592,
-                1.0
-            ],
-            "type": "VEC4"
-        },
-        {
-            "name": "pSphereShape1#0/vertices/TEXCOORD_0",
-            "bufferView": 3,
-            "byteOffset": 258872,
-            "componentType": 5126,
-            "count": 32359,
-            "max": [
-                0.7000001072883606,
-                1.0
-            ],
-            "min": [
-                0.4500000476837158,
-                0.0
-            ],
-            "type": "VEC2"
-        },
-        {
-            "name": "pCubeShape348#0/indices",
-            "bufferView": 0,
-            "byteOffset": 376680,
-            "componentType": 5123,
-            "count": 36,
-            "max": [
-                23
-            ],
-            "min": [
-                0
-            ],
-            "type": "SCALAR"
-        },
-        {
-            "name": "pCubeShape348#0/vertices/NORMAL",
-            "bufferView": 1,
-            "byteOffset": 1553232,
-            "componentType": 5126,
-            "count": 24,
-            "max": [
-                1.0,
-                0.9999999403953552,
-                1.0
-            ],
-            "min": [
-                -1.0,
-                -0.9999999403953552,
-                -1.0
-            ],
-            "type": "VEC3"
-        },
-        {
-            "name": "pCubeShape348#0/vertices/POSITION",
-            "bufferView": 1,
-            "byteOffset": 1553520,
-            "componentType": 5126,
-            "count": 24,
-            "max": [
-                0.5,
-                0.5,
-                0.5
-            ],
-            "min": [
-                -0.5,
-                -0.5,
-                -0.5
-            ],
-            "type": "VEC3"
-        },
-        {
-            "name": "pCubeShape348#0/vertices/TANGENT",
-            "bufferView": 2,
-            "byteOffset": 1035488,
-            "componentType": 5126,
-            "count": 24,
-            "max": [
-                1.0,
-                0.0,
-                1.0,
-                1.0
-            ],
-            "min": [
-                0.0,
-                0.0,
-                -1.0,
-                1.0
-            ],
-            "type": "VEC4"
-        },
-        {
-            "name": "pCubeShape348#0/vertices/TEXCOORD_0",
-            "bufferView": 3,
-            "byteOffset": 517744,
-            "componentType": 5126,
-            "count": 24,
-            "max": [
-                0.875,
-                1.0
-            ],
-            "min": [
-                0.125,
-                0.0
-            ],
-            "type": "VEC2"
-        },
-        {
             "name": "pCubeShape347#0/indices",
             "bufferView": 0,
-            "byteOffset": 376752,
+            "byteOffset": 0,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -1565,7 +1345,7 @@
         {
             "name": "pCubeShape347#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1553808,
+            "byteOffset": 0,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1583,7 +1363,7 @@
         {
             "name": "pCubeShape347#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1554096,
+            "byteOffset": 288,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1601,7 +1381,7 @@
         {
             "name": "pCubeShape347#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1035872,
+            "byteOffset": 0,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1621,7 +1401,7 @@
         {
             "name": "pCubeShape347#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 517936,
+            "byteOffset": 0,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1637,7 +1417,7 @@
         {
             "name": "pCubeShape346#0/indices",
             "bufferView": 0,
-            "byteOffset": 376824,
+            "byteOffset": 72,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -1651,7 +1431,7 @@
         {
             "name": "pCubeShape346#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1554384,
+            "byteOffset": 576,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1669,7 +1449,7 @@
         {
             "name": "pCubeShape346#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1554672,
+            "byteOffset": 864,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1687,7 +1467,7 @@
         {
             "name": "pCubeShape346#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1036256,
+            "byteOffset": 384,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1707,7 +1487,7 @@
         {
             "name": "pCubeShape346#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 518128,
+            "byteOffset": 192,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1723,7 +1503,7 @@
         {
             "name": "pCubeShape345#0/indices",
             "bufferView": 0,
-            "byteOffset": 376896,
+            "byteOffset": 144,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -1737,7 +1517,7 @@
         {
             "name": "pCubeShape345#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1554960,
+            "byteOffset": 1152,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1755,7 +1535,7 @@
         {
             "name": "pCubeShape345#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1555248,
+            "byteOffset": 1440,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1773,7 +1553,7 @@
         {
             "name": "pCubeShape345#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1036640,
+            "byteOffset": 768,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1793,7 +1573,7 @@
         {
             "name": "pCubeShape345#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 518320,
+            "byteOffset": 384,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1809,7 +1589,7 @@
         {
             "name": "pCubeShape344#0/indices",
             "bufferView": 0,
-            "byteOffset": 376968,
+            "byteOffset": 216,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -1823,7 +1603,7 @@
         {
             "name": "pCubeShape344#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1555536,
+            "byteOffset": 1728,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1841,7 +1621,7 @@
         {
             "name": "pCubeShape344#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1555824,
+            "byteOffset": 2016,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1859,7 +1639,7 @@
         {
             "name": "pCubeShape344#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1037024,
+            "byteOffset": 1152,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1879,7 +1659,7 @@
         {
             "name": "pCubeShape344#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 518512,
+            "byteOffset": 576,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1895,7 +1675,7 @@
         {
             "name": "pCubeShape343#0/indices",
             "bufferView": 0,
-            "byteOffset": 377040,
+            "byteOffset": 288,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -1909,7 +1689,7 @@
         {
             "name": "pCubeShape343#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1556112,
+            "byteOffset": 2304,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1927,7 +1707,7 @@
         {
             "name": "pCubeShape343#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1556400,
+            "byteOffset": 2592,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1945,7 +1725,7 @@
         {
             "name": "pCubeShape343#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1037408,
+            "byteOffset": 1536,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1965,7 +1745,7 @@
         {
             "name": "pCubeShape343#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 518704,
+            "byteOffset": 768,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -1981,7 +1761,7 @@
         {
             "name": "pCubeShape342#0/indices",
             "bufferView": 0,
-            "byteOffset": 377112,
+            "byteOffset": 360,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -1995,7 +1775,7 @@
         {
             "name": "pCubeShape342#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1556688,
+            "byteOffset": 2880,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2013,7 +1793,7 @@
         {
             "name": "pCubeShape342#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1556976,
+            "byteOffset": 3168,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2031,7 +1811,7 @@
         {
             "name": "pCubeShape342#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1037792,
+            "byteOffset": 1920,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2051,7 +1831,7 @@
         {
             "name": "pCubeShape342#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 518896,
+            "byteOffset": 960,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2067,7 +1847,7 @@
         {
             "name": "pCubeShape341#0/indices",
             "bufferView": 0,
-            "byteOffset": 377184,
+            "byteOffset": 432,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2081,7 +1861,7 @@
         {
             "name": "pCubeShape341#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1557264,
+            "byteOffset": 3456,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2099,7 +1879,7 @@
         {
             "name": "pCubeShape341#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1557552,
+            "byteOffset": 3744,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2117,7 +1897,7 @@
         {
             "name": "pCubeShape341#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1038176,
+            "byteOffset": 2304,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2137,7 +1917,7 @@
         {
             "name": "pCubeShape341#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 519088,
+            "byteOffset": 1152,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2153,7 +1933,7 @@
         {
             "name": "pCubeShape340#0/indices",
             "bufferView": 0,
-            "byteOffset": 377256,
+            "byteOffset": 504,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2167,7 +1947,7 @@
         {
             "name": "pCubeShape340#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1557840,
+            "byteOffset": 4032,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2185,7 +1965,7 @@
         {
             "name": "pCubeShape340#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1558128,
+            "byteOffset": 4320,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2203,7 +1983,7 @@
         {
             "name": "pCubeShape340#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1038560,
+            "byteOffset": 2688,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2223,7 +2003,7 @@
         {
             "name": "pCubeShape340#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 519280,
+            "byteOffset": 1344,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2239,7 +2019,7 @@
         {
             "name": "pCubeShape339#0/indices",
             "bufferView": 0,
-            "byteOffset": 377328,
+            "byteOffset": 576,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2253,7 +2033,7 @@
         {
             "name": "pCubeShape339#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1558416,
+            "byteOffset": 4608,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2271,7 +2051,7 @@
         {
             "name": "pCubeShape339#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1558704,
+            "byteOffset": 4896,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2289,7 +2069,7 @@
         {
             "name": "pCubeShape339#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1038944,
+            "byteOffset": 3072,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2309,7 +2089,7 @@
         {
             "name": "pCubeShape339#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 519472,
+            "byteOffset": 1536,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2325,7 +2105,7 @@
         {
             "name": "pCubeShape338#0/indices",
             "bufferView": 0,
-            "byteOffset": 377400,
+            "byteOffset": 648,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2339,17 +2119,17 @@
         {
             "name": "pCubeShape338#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1558992,
+            "byteOffset": 5184,
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
-                0.9999999403953552,
+                1.0,
+                1.0,
                 1.0
             ],
             "min": [
-                -0.9999999403953552,
-                -0.9999999403953552,
+                -1.0,
+                -1.0,
                 -1.0
             ],
             "type": "VEC3"
@@ -2357,7 +2137,7 @@
         {
             "name": "pCubeShape338#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1559280,
+            "byteOffset": 5472,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2375,11 +2155,11 @@
         {
             "name": "pCubeShape338#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1039328,
+            "byteOffset": 3456,
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
+                1.0,
                 0.0,
                 1.0,
                 1.0
@@ -2395,7 +2175,7 @@
         {
             "name": "pCubeShape338#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 519664,
+            "byteOffset": 1728,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2411,7 +2191,7 @@
         {
             "name": "pCubeShape323#0/indices",
             "bufferView": 0,
-            "byteOffset": 377472,
+            "byteOffset": 720,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2425,7 +2205,7 @@
         {
             "name": "pCubeShape323#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1559568,
+            "byteOffset": 5760,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2443,7 +2223,7 @@
         {
             "name": "pCubeShape323#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1559856,
+            "byteOffset": 6048,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2461,7 +2241,7 @@
         {
             "name": "pCubeShape323#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1039712,
+            "byteOffset": 3840,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2481,7 +2261,7 @@
         {
             "name": "pCubeShape323#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 519856,
+            "byteOffset": 1920,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2497,7 +2277,7 @@
         {
             "name": "pCubeShape322#0/indices",
             "bufferView": 0,
-            "byteOffset": 377544,
+            "byteOffset": 792,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2511,17 +2291,17 @@
         {
             "name": "pCubeShape322#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1560144,
+            "byteOffset": 6336,
             "componentType": 5126,
             "count": 24,
             "max": [
-                1.0,
                 0.9999999403953552,
+                1.0,
                 0.9999999403953552
             ],
             "min": [
-                -1.0,
                 -0.9999999403953552,
+                -1.0,
                 -0.9999999403953552
             ],
             "type": "VEC3"
@@ -2529,7 +2309,7 @@
         {
             "name": "pCubeShape322#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1560432,
+            "byteOffset": 6624,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2547,11 +2327,11 @@
         {
             "name": "pCubeShape322#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1040096,
+            "byteOffset": 4224,
             "componentType": 5126,
             "count": 24,
             "max": [
-                1.0,
+                0.9999999403953552,
                 0.0,
                 0.9999999403953552,
                 1.0
@@ -2567,7 +2347,7 @@
         {
             "name": "pCubeShape322#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 520048,
+            "byteOffset": 2112,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2583,7 +2363,7 @@
         {
             "name": "pCubeShape321#0/indices",
             "bufferView": 0,
-            "byteOffset": 377616,
+            "byteOffset": 864,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2597,17 +2377,17 @@
         {
             "name": "pCubeShape321#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1560720,
+            "byteOffset": 6912,
             "componentType": 5126,
             "count": 24,
             "max": [
                 1.0,
-                1.0,
+                0.9999999403953552,
                 0.9999999403953552
             ],
             "min": [
                 -1.0,
-                -1.0,
+                -0.9999999403953552,
                 -0.9999999403953552
             ],
             "type": "VEC3"
@@ -2615,7 +2395,7 @@
         {
             "name": "pCubeShape321#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1561008,
+            "byteOffset": 7200,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2633,7 +2413,7 @@
         {
             "name": "pCubeShape321#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1040480,
+            "byteOffset": 4608,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2653,7 +2433,7 @@
         {
             "name": "pCubeShape321#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 520240,
+            "byteOffset": 2304,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2669,7 +2449,7 @@
         {
             "name": "pCubeShape320#0/indices",
             "bufferView": 0,
-            "byteOffset": 377688,
+            "byteOffset": 936,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2683,16 +2463,16 @@
         {
             "name": "pCubeShape320#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1561296,
+            "byteOffset": 7488,
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
+                1.0,
                 1.0,
                 1.0
             ],
             "min": [
-                -0.9999999403953552,
+                -1.0,
                 -1.0,
                 -1.0
             ],
@@ -2701,7 +2481,7 @@
         {
             "name": "pCubeShape320#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1561584,
+            "byteOffset": 7776,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2719,11 +2499,11 @@
         {
             "name": "pCubeShape320#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1040864,
+            "byteOffset": 4992,
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
+                1.0,
                 0.0,
                 1.0,
                 1.0
@@ -2739,7 +2519,7 @@
         {
             "name": "pCubeShape320#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 520432,
+            "byteOffset": 2496,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2755,7 +2535,7 @@
         {
             "name": "pCubeShape319#0/indices",
             "bufferView": 0,
-            "byteOffset": 377760,
+            "byteOffset": 1008,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2769,7 +2549,7 @@
         {
             "name": "pCubeShape319#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1561872,
+            "byteOffset": 8064,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2787,7 +2567,7 @@
         {
             "name": "pCubeShape319#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1562160,
+            "byteOffset": 8352,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2805,7 +2585,7 @@
         {
             "name": "pCubeShape319#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1041248,
+            "byteOffset": 5376,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2825,7 +2605,7 @@
         {
             "name": "pCubeShape319#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 520624,
+            "byteOffset": 2688,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2841,7 +2621,7 @@
         {
             "name": "pCubeShape318#0/indices",
             "bufferView": 0,
-            "byteOffset": 377832,
+            "byteOffset": 1080,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2855,16 +2635,16 @@
         {
             "name": "pCubeShape318#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1562448,
+            "byteOffset": 8640,
             "componentType": 5126,
             "count": 24,
             "max": [
-                1.0,
+                0.9999999403953552,
                 1.0,
                 1.0
             ],
             "min": [
-                -1.0,
+                -0.9999999403953552,
                 -1.0,
                 -1.0
             ],
@@ -2873,7 +2653,7 @@
         {
             "name": "pCubeShape318#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1562736,
+            "byteOffset": 8928,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2891,11 +2671,11 @@
         {
             "name": "pCubeShape318#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1041632,
+            "byteOffset": 5760,
             "componentType": 5126,
             "count": 24,
             "max": [
-                1.0,
+                0.9999999403953552,
                 0.0,
                 1.0,
                 1.0
@@ -2911,7 +2691,7 @@
         {
             "name": "pCubeShape318#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 520816,
+            "byteOffset": 2880,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2927,7 +2707,7 @@
         {
             "name": "pCubeShape317#0/indices",
             "bufferView": 0,
-            "byteOffset": 377904,
+            "byteOffset": 1152,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -2941,16 +2721,16 @@
         {
             "name": "pCubeShape317#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1563024,
+            "byteOffset": 9216,
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
+                1.0,
                 1.0,
                 1.0
             ],
             "min": [
-                -0.9999999403953552,
+                -1.0,
                 -1.0,
                 -1.0
             ],
@@ -2959,7 +2739,7 @@
         {
             "name": "pCubeShape317#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1563312,
+            "byteOffset": 9504,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -2977,11 +2757,11 @@
         {
             "name": "pCubeShape317#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1042016,
+            "byteOffset": 6144,
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
+                1.0,
                 0.0,
                 1.0,
                 1.0
@@ -2997,7 +2777,7 @@
         {
             "name": "pCubeShape317#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 521008,
+            "byteOffset": 3072,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -3013,7 +2793,7 @@
         {
             "name": "pCubeShape316#0/indices",
             "bufferView": 0,
-            "byteOffset": 377976,
+            "byteOffset": 1224,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -3027,16 +2807,16 @@
         {
             "name": "pCubeShape316#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1563600,
+            "byteOffset": 9792,
             "componentType": 5126,
             "count": 24,
             "max": [
-                1.0,
+                0.9999999403953552,
                 1.0,
                 1.0
             ],
             "min": [
-                -1.0,
+                -0.9999999403953552,
                 -1.0,
                 -1.0
             ],
@@ -3045,7 +2825,7 @@
         {
             "name": "pCubeShape316#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1563888,
+            "byteOffset": 10080,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -3063,11 +2843,11 @@
         {
             "name": "pCubeShape316#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1042400,
+            "byteOffset": 6528,
             "componentType": 5126,
             "count": 24,
             "max": [
-                1.0,
+                0.9999999403953552,
                 0.0,
                 1.0,
                 1.0
@@ -3083,7 +2863,7 @@
         {
             "name": "pCubeShape316#0/vertices/TEXCOORD_0",
             "bufferView": 3,
-            "byteOffset": 521200,
+            "byteOffset": 3264,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -3099,7 +2879,7 @@
         {
             "name": "pCubeShape315#0/indices",
             "bufferView": 0,
-            "byteOffset": 378048,
+            "byteOffset": 1296,
             "componentType": 5123,
             "count": 36,
             "max": [
@@ -3113,16 +2893,16 @@
         {
             "name": "pCubeShape315#0/vertices/NORMAL",
             "bufferView": 1,
-            "byteOffset": 1564176,
+            "byteOffset": 10368,
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
+                1.0,
                 1.0,
                 1.0
             ],
             "min": [
-                -0.9999999403953552,
+                -1.0,
                 -1.0,
                 -1.0
             ],
@@ -3131,7 +2911,7 @@
         {
             "name": "pCubeShape315#0/vertices/POSITION",
             "bufferView": 1,
-            "byteOffset": 1564464,
+            "byteOffset": 10656,
             "componentType": 5126,
             "count": 24,
             "max": [
@@ -3149,11 +2929,11 @@
         {
             "name": "pCubeShape315#0/vertices/TANGENT",
             "bufferView": 2,
-            "byteOffset": 1042784,
+            "byteOffset": 6912,
             "componentType": 5126,
             "count": 24,
             "max": [
-                0.9999999403953552,
+                1.0,
                 0.0,
                 1.0,
                 1.0
@@ -3168,6 +2948,264 @@
         },
         {
             "name": "pCubeShape315#0/vertices/TEXCOORD_0",
+            "bufferView": 3,
+            "byteOffset": 3456,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                0.875,
+                1.0
+            ],
+            "min": [
+                0.125,
+                0.0
+            ],
+            "type": "VEC2"
+        },
+        {
+            "name": "pSphereShape2#0/indices",
+            "bufferView": 0,
+            "byteOffset": 1368,
+            "componentType": 5123,
+            "count": 94170,
+            "max": [
+                32358
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        },
+        {
+            "name": "pSphereShape2#0/vertices/NORMAL",
+            "bufferView": 1,
+            "byteOffset": 10944,
+            "componentType": 5126,
+            "count": 32359,
+            "max": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                -0.9894452095031738,
+                -1.0,
+                -0.9856448769569396
+            ],
+            "type": "VEC3"
+        },
+        {
+            "name": "pSphereShape2#0/vertices/POSITION",
+            "bufferView": 1,
+            "byteOffset": 399252,
+            "componentType": 5126,
+            "count": 32359,
+            "max": [
+                0.00042629201197996736,
+                281.0461120605469,
+                1.0
+            ],
+            "min": [
+                -1.000000238418579,
+                -281.0461120605469,
+                -0.00012445400352589786
+            ],
+            "type": "VEC3"
+        },
+        {
+            "name": "pSphereShape2#0/vertices/TANGENT",
+            "bufferView": 2,
+            "byteOffset": 7296,
+            "componentType": 5126,
+            "count": 32359,
+            "max": [
+                0.9894458055496216,
+                1.0,
+                0.9856460094451904,
+                1.0
+            ],
+            "min": [
+                -0.9894452095031738,
+                -1.0,
+                -0.9856460094451904,
+                1.0
+            ],
+            "type": "VEC4"
+        },
+        {
+            "name": "pSphereShape2#0/vertices/TEXCOORD_0",
+            "bufferView": 3,
+            "byteOffset": 3648,
+            "componentType": 5126,
+            "count": 32359,
+            "max": [
+                0.7000001072883606,
+                1.0
+            ],
+            "min": [
+                0.4500000476837158,
+                0.0
+            ],
+            "type": "VEC2"
+        },
+        {
+            "name": "pSphereShape1#0/indices",
+            "bufferView": 0,
+            "byteOffset": 189708,
+            "componentType": 5123,
+            "count": 94170,
+            "max": [
+                32358
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        },
+        {
+            "name": "pSphereShape1#0/vertices/NORMAL",
+            "bufferView": 1,
+            "byteOffset": 787560,
+            "componentType": 5126,
+            "count": 32359,
+            "max": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                -0.989445686340332,
+                -1.0,
+                -0.9856472611427308
+            ],
+            "type": "VEC3"
+        },
+        {
+            "name": "pSphereShape1#0/vertices/POSITION",
+            "bufferView": 1,
+            "byteOffset": 1175868,
+            "componentType": 5126,
+            "count": 32359,
+            "max": [
+                0.00042629201197996736,
+                281.0461120605469,
+                1.0
+            ],
+            "min": [
+                -1.000000238418579,
+                -281.0461120605469,
+                -0.00012445400352589786
+            ],
+            "type": "VEC3"
+        },
+        {
+            "name": "pSphereShape1#0/vertices/TANGENT",
+            "bufferView": 2,
+            "byteOffset": 525040,
+            "componentType": 5126,
+            "count": 32359,
+            "max": [
+                0.9894462823867798,
+                1.0,
+                0.9856460094451904,
+                1.0
+            ],
+            "min": [
+                -0.9894452095031738,
+                -1.0,
+                -0.9856460094451904,
+                1.0
+            ],
+            "type": "VEC4"
+        },
+        {
+            "name": "pSphereShape1#0/vertices/TEXCOORD_0",
+            "bufferView": 3,
+            "byteOffset": 262520,
+            "componentType": 5126,
+            "count": 32359,
+            "max": [
+                0.7000001072883606,
+                1.0
+            ],
+            "min": [
+                0.4500000476837158,
+                0.0
+            ],
+            "type": "VEC2"
+        },
+        {
+            "name": "pCubeShape348#0/indices",
+            "bufferView": 0,
+            "byteOffset": 378048,
+            "componentType": 5123,
+            "count": 36,
+            "max": [
+                23
+            ],
+            "min": [
+                0
+            ],
+            "type": "SCALAR"
+        },
+        {
+            "name": "pCubeShape348#0/vertices/NORMAL",
+            "bufferView": 1,
+            "byteOffset": 1564176,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                -1.0,
+                -1.0,
+                -1.0
+            ],
+            "type": "VEC3"
+        },
+        {
+            "name": "pCubeShape348#0/vertices/POSITION",
+            "bufferView": 1,
+            "byteOffset": 1564464,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "min": [
+                -0.5,
+                -0.5,
+                -0.5
+            ],
+            "type": "VEC3"
+        },
+        {
+            "name": "pCubeShape348#0/vertices/TANGENT",
+            "bufferView": 2,
+            "byteOffset": 1042784,
+            "componentType": 5126,
+            "count": 24,
+            "max": [
+                1.0,
+                0.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                0.0,
+                0.0,
+                -1.0,
+                1.0
+            ],
+            "type": "VEC4"
+        },
+        {
+            "name": "pCubeShape348#0/vertices/TEXCOORD_0",
             "bufferView": 3,
             "byteOffset": 521392,
             "componentType": 5126,
@@ -3290,12 +3328,12 @@
             "count": 24,
             "max": [
                 1.0,
-                0.9999999403953552,
+                1.0,
                 1.0
             ],
             "min": [
                 -1.0,
-                -0.9999999403953552,
+                -1.0,
                 -1.0
             ],
             "type": "VEC3"
@@ -3462,12 +3500,12 @@
             "count": 24,
             "max": [
                 1.0,
-                0.9999999403953552,
+                1.0,
                 1.0
             ],
             "min": [
                 -1.0,
-                -0.9999999403953552,
+                -1.0,
                 -1.0
             ],
             "type": "VEC3"
@@ -3634,12 +3672,12 @@
             "count": 24,
             "max": [
                 1.0,
-                0.9999999403953552,
+                1.0,
                 1.0
             ],
             "min": [
                 -1.0,
-                -0.9999999403953552,
+                -1.0,
                 -1.0
             ],
             "type": "VEC3"
@@ -3806,12 +3844,12 @@
             "count": 24,
             "max": [
                 1.0,
-                0.9999999403953552,
+                1.0,
                 1.0
             ],
             "min": [
                 -1.0,
-                -0.9999999403953552,
+                -1.0,
                 -1.0
             ],
             "type": "VEC3"
@@ -3978,12 +4016,12 @@
             "count": 24,
             "max": [
                 1.0,
-                0.9999999403953552,
+                1.0,
                 1.0
             ],
             "min": [
                 -1.0,
-                -0.9999999403953552,
+                -1.0,
                 -1.0
             ],
             "type": "VEC3"
