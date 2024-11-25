@@ -139,8 +139,8 @@ createSurroundingLights('ML', { x: 0.29, y: 1.12, z: 8.76 }, { x: 4.77, y: 2.24,
 createSurroundingLights('RGD', { x: 10.62, y: 0.66, z: 0.71 }, { x: 2.35, y: 1.38, z: 3.71 });
 createSurroundingLights('C', { x: -4.39, y: 1.22, z: -4.90 }, { x: 4.60, y: 2.53, z: 4.45 });
 createSurroundingLights('TX', { x: -9.78, y: 1.74, z: 1.81 }, { x: 3.79, y: 3.19, z: 3.35 });
-createSurroundingLights('TrashCan', { x: -29.88, y: 1.67, z: 6.06 }, { x: 10.57, y: 3.38, z: 7.91 });
-createSurroundingLights('Aulas', { x: 16.01, y: 0.71, z: 0.72 }, { x: 4.94, y: 1.43, z: 3.92 });
+createSurroundingLights('GA', { x: -29.88, y: 1.67, z: 6.06 }, { x: 10.57, y: 3.38, z: 7.91 });
+createSurroundingLights('AU', { x: 16.01, y: 0.71, z: 0.72 }, { x: 4.94, y: 1.43, z: 3.92 });
 createSurroundingLights('O', { x: -12.92, y: 0.49, z: -13.14 }, { x: 1.59, y: 1.10, z: 6.21 });
 
 // Actualizar colores
@@ -153,7 +153,7 @@ async function fetchBuildingEntries() {
   }
 }
 
-function calcularTono(valor, minimo = 0, maximo = 2000) {
+function calcularTono(valor, minimo = 0, maximo = 1200) {
   const proporcion = Math.min(Math.max((maximo - valor) / (maximo - minimo), 0), 1);
   return 0.33 * proporcion;
 }
@@ -165,7 +165,8 @@ async function actualizarColores() {
   const edificios = await fetchBuildingEntries();
   if (!edificios) return;
 
-  const regex = /\[(\d+)(?:\.(\d+))?, (\d+)(?:\.(\d+))?\]/;
+  const regex = /\((\d+)(?:\.(\d+))?, (\d+)(?:\.(\d+))?\)/;
+
   for (const rango in edificios[Object.keys(edificios)[0]]) {
     const match = rango.match(regex);
     if (!match) continue;
@@ -181,7 +182,9 @@ async function actualizarColores() {
     clockElement.textContent = `${formattedNum1} - ${formattedNum2}`;
 
     for (const edificio in edificios) {
-      const valor = edificios[edificio][rango];
+      let valor = edificios[edificio][rango];
+      if (valor === undefined) valor = 0;
+      console.log(edificio, valor);
       const hue = calcularTono(valor);
       const startHue = START_HUES[edificio];
       animateModelLightHue(edificio, startHue, hue, 1000);
