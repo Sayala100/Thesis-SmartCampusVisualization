@@ -1,6 +1,7 @@
 #%%
 import pandas as pd
 import json
+import re
 
 # Function to extract days and schedule details
 def parse_schedule_line(line):
@@ -29,7 +30,7 @@ def parse_schedule_line(line):
     return days, schedule_details
 
 # Input text
-file = open("../data/salones_sin_formatear.json", "r", encoding="utf-8")
+file = open("../data/oferta_sin_formatear.json", "r", encoding="utf-8")
 data_json = json.loads(file.read())
 
 courses = pd.DataFrame()
@@ -50,7 +51,7 @@ for materia in data_json:
     lines = [line for line in lines if ":" in line or lines.index(line) > campus_index or lines.index(line) <= 4 ] 
 
     # Extract schedule lines by identifying lines containing '.Edif.'
-    schedule_lines = [line for line in lines if ".Edif." in line or ".centro" in line or "Bloque" in line]
+    schedule_lines = [line for line in lines if re.search(r'\b\d{4}-\d{4}\b.*\b\d{4}-\d{2}-\d{2}\b', line) ]
 
     # Define schedule keys
     horario_keys = ["Días", "Horas", "Salón", "Fecha inicio", "Fecha fin", "Edificio"]
