@@ -28,7 +28,7 @@ def process_csv(file_path):
     return buildings
 
 
-def get_piso(edificio, piso):
+def get_piso(edificio, piso, day = "I"):
     time_ranges = [round(x * 0.5, 1) for x in range(12, 42)]  # 6:00 to 21:00 in half-hour intervals
     standard_times = [f"{time}-{time+0.5}" for time in time_ranges[:-1]]  # Generate time ranges like '6-6.5', '6.5-7', ...
 
@@ -66,6 +66,7 @@ def get_piso(edificio, piso):
     if edificio!="GA":
         data = data[data["Floor"]==str(piso)]
 
+    data = data[data['Días'] == day]
     data = data.groupby(['Salón','Horas'], as_index=False)['Inscritos'].agg('sum')
 
     # Apply the transformation to the dataframe
