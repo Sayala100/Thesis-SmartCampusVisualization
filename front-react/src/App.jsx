@@ -11,7 +11,7 @@ function ContenidoApp() {
       <Suspense fallback={<div>Cargando...</div>}>
         <Routes>
           <Route path="/" element={<Principal />} />
-          <Route path="/hello" element={<DetailedView />} />
+          <Route path="/detail" element={<DetailedView />} />
         </Routes>
       </Suspense>
     </div>
@@ -70,7 +70,7 @@ function Principal() {
   };
 
   const irADetalle = () => {
-    window.location.href = `/hello?building=${edificioSeleccionado}&floor=${pisoSeleccionado}`;
+    window.location.href = `/detail?building=${edificioSeleccionado}&floor=${pisoSeleccionado}`;
   };
 
   return (

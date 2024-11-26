@@ -1,0 +1,31 @@
+{
+    "ML": {
+      "5": {
+        "ML-512": {
+          "width": 150,
+          "height": 200,
+          "positionx": 0,
+          "positiony": 0
+        },
+        "ML-513": {
+          "width": 150,
+          "height": 200,
+          "positionx": 160,
+          "positiony": 0
+        },
+        "ML-514": {
+          "width": 150,
+          "height": 200,
+          "positionx": 320,
+          "positiony": 0
+        },
+        "ML-515": {
+          "width": 150,
+          "height": 200,
+          "positionx": 480,
+          "positiony": 0
+        }
+      }
+    }
+  }
+  
