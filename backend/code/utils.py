@@ -91,10 +91,15 @@ def get_piso(edificio, piso, day = "I"):
     full_ranges = pd.DataFrame([(salon, time) for salon in data['Salón'].unique() for time in standard_times], columns=['Salón', 'Standardized_Hours'])
     final_data = full_ranges.merge(final_data, on=['Salón', 'Standardized_Hours'], how='left').fillna({'Inscritos': 0})
 
-    # Display the result
-    print(final_data)
-    final_data.to_csv('../data/rangos.csv', index=False)
-    return final_data.to_dict(orient='records')
+
+    result = {
+        salon: {
+                row['Standardized_Hours']: row['Inscritos']
+            for _, row in salon_df.iterrows()}
+        for salon, salon_df in final_data.groupby('Salón')
+    }
+    
+    return result
 
 
 
