@@ -7,7 +7,7 @@ import detailbg from '../assets/detailbg.png';
 
 async function fetchRoomsEntries(){
   try {
-    const response = await axios.post('http://localhost:8000/get_ocupacion_piso',{
+    const response = await axios.post('https://smartcampus.notadev.lat/get_ocupacion_piso',{
       Edificio: "ML",
       Piso: "5"
     });
