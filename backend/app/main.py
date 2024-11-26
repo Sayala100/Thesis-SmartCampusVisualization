@@ -26,7 +26,8 @@ async def process_csv():
 @app.post("/get_ocupacion_piso")
 #Data looks like this: {"data": {"Building": "ML", "Floor": 1}}
 async def visualize(data: dict = Body(...)):
-    keys = list(data.keys()) # edificio
-    return utils.get_piso(keys[0], data[keys[0]])
+    edificio = data['Edificio'] 
+    piso = data['Piso']
+    return utils.get_piso(edificio, piso)
     #Return an image from the ../assets/out folder
 
