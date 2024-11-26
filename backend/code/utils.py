@@ -20,7 +20,7 @@ def process_csv(file_path):
         for row in csv_reader:
             edificio = row['Edificio'].strip()
             rango_horas = row['Rango de Horas'].strip()
-            entradas = int(row['Entradas'].strip())
+            entradas = float(row['Inscritos'].strip())
 
             # Sumar las entradas al rango de horas correspondiente
             buildings[edificio][rango_horas] += entradas

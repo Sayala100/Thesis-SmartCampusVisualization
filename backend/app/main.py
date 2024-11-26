@@ -20,13 +20,13 @@ app.add_middleware(
 
 @app.get("/procesar_entradas_edificio")
 async def process_csv():
-    data = utils.process_csv('../data/entradas_edificio_hora.csv')
+    data = utils.process_csv('../data/entradas_edificio_hora_completos.csv')
     return data
 
 @app.post("/gen_images/")
 #Data looks like this: {"data": {"Building": "ML", "Floor": 1}}
 async def visualize(data: dict = Body(...)):
-    print(data)
-    return FileResponse("../assets/out/0.jpg")
+    keys = list(data.keys())
+    return FileResponse(f"../assets/{keys[0]} {data[keys[0]]}.jpg")
     #Return an image from the ../assets/out folder
 
