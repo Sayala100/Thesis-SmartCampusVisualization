@@ -23,10 +23,10 @@ async def process_csv():
     data = utils.process_csv('../data/entradas_edificio_hora_completos.csv')
     return data
 
-@app.post("/gen_images/")
+@app.post("/get_ocupacion_piso")
 #Data looks like this: {"data": {"Building": "ML", "Floor": 1}}
 async def visualize(data: dict = Body(...)):
-    keys = list(data.keys())
-    return FileResponse(f"../assets/{keys[0]} {data[keys[0]]}.jpg")
+    keys = list(data.keys()) # edificio
+    return utils.get_piso(keys[0], data[keys[0]])
     #Return an image from the ../assets/out folder
 
