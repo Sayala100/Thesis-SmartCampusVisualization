@@ -3,45 +3,67 @@ import rectanglesData from './dimensions.json';
 import Rectangle from './rectangle';
 import { calculateSVGSize } from "./utils";
 import axios from 'axios';
+import detailbg from '../assets/detailbg.png';
 
 async function fetchRoomsEntries(){
   try {
     const response = await axios.post('http://localhost:8000/get_ocupacion_piso',{
-      edificio: "ML",
-      piso: "5"
+      Edificio: "ML",
+      Piso: "5"
     });
-    console.log(response.data);
     return response.data;
   }catch (error){
     console.error('Error fetching rooms entries:', error);
   }
 }
 
-async function updateOcupation(rectangles){
+async function updateOcupation(rectangles, setTime){
   const rooms = await fetchRoomsEntries();
   if (!rooms) return;
-  
+  const regex = /(\d+)(?:\.(\d+))?-(\d+)(?:\.(\d+))?/;
   for (const rango in rooms[Object.keys(rooms)[0]]) {
+    const match = rango.match(regex);
+    console.log(match)
+    let num1 = match[1];
+    let decimal1 = match[2];
+    let num2 = match[3];
+    let decimal2 = match[4];
+    let formattedNum1 = decimal1 === "0" ? `${num1}:00` : `${num1}:${decimal1 === "5" ? "30" : "00"}`;
+    let formattedNum2 = decimal2 === "0" ? `${num2}:00` : `${num2}:${decimal2 === "5" ? "30" : "00"}`;
     for (const room in rooms) {
-      let ocupation = rooms[room][rango];
-      if (ocupation === undefined) ocupation = 0;
-      console.log(room, ocupation);
-      rectangles[room].ocupation = ocupation;
+      if (room in rectangles){
+        let ocupation = rooms[room][rango];
+        rectangles[room]["ocupation"] = ocupation;
+        console.log(rectangles[room]);
+        setTime(`${formattedNum1} - ${formattedNum2}`);
+      }
+      // console.log(rango);
+      // console.log(room, ocupation);
+      //Create ocupation entry for the rectangle
     }
     await sleep(1000);
   }
 }
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
+const clockElement = document.getElementById('clock');
+clockElement.remove();
 
+const canvasElement = document.getElementById('bg');
+canvasElement.remove();
 
 function DetailedView() {
   
   const [building, setBuilding] = useState("");
-  const [rectangles, setRectangles] = useState([]);
+  const [rectangles, setRectangles] = useState({});
   const [floor, setFloor] = useState("");
   const [hoveredRectangle, setHoveredRectangle] = useState("");
+  const [time, setTime] = useState(new Date().toLocaleTimeString());
 
   useEffect(() => {
+
     const queryParams = new URLSearchParams(window.location.search);
     const buildingFromUrl = queryParams.get("building");
     const floorFromUrl = queryParams.get("floor");
@@ -52,39 +74,53 @@ function DetailedView() {
   
       const data = rectanglesData[buildingFromUrl]?.[floorFromUrl];
       if (data) {
-        const rectanglesData = Object.keys(data).map((key) => ({
-          id: key,
-          ...data[key],
-          text: key,
-        }));
-        setRectangles(rectanglesData);
+    
+        const rectanglesObject = Object.keys(data).reduce((acc, key) => {
+          acc[key] = {
+            ...data[key],
+            text: key,
+          };
+          return acc;
+        }, {});
+  
+        setRectangles(rectanglesObject);
+        // updateOcupation(rectangles);
       }
     }
-  }, []);
-  
+  }, []);  
+
   useEffect(() => {
-    if (rectangles.length > 0) {
-      updateOcupation(rectangles);
-    }
-  }, [rectangles]); // This effect runs when rectangles is updated
-  
+    updateOcupation(rectangles, setTime);
+  }, [rectangles]);
 
   const svgSize = calculateSVGSize(rectangles);
 
   return (
-    <div style={{ position: "relative", textAlign: "center" }}>
+    <div       
+      style={{
+        position: "relative",
+        textAlign: "center",
+        backgroundImage: `url(${detailbg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        margin: "0", // Add this
+        padding: "0", // Add this
+        overflow: "hidden", // Prevent scrolling from unnecessary whitespace
+      }}>
       <h2>Detalles del edificio: {building} - {floor}</h2>
+      <h3>Franaja horaria: {time}</h3>
       <svg width={svgSize.width} height={svgSize.height}>
         <rect
           x={0}
           y={0}
           width={svgSize.width}
           height={svgSize.height}
-          fill="none"
+          fill="white"
           stroke="black"
           strokeWidth="2"
         />
-        {rectangles.map(({ id, positionx, positiony, width, height, text, ocupation }) => (
+        {Object.values(rectangles).map(({ id, positionx, positiony, width, height, text, ocupation }) => (
           <Rectangle
             key={id}
             x={positionx + svgSize.xOffset}

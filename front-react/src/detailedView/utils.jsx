@@ -52,12 +52,12 @@ function calculateLuminance(r, g, b) {
   const calculateSVGSize = (rectangles) => {
     const padding = 30;
     let maxWidth = 0, maxHeight = 0;
-
-    rectangles.forEach(({ positionx, positiony, width, height }) => {
+  
+    Object.values(rectangles).forEach(({ positionx, positiony, width, height }) => {
       maxWidth = Math.max(maxWidth, positionx + width);
       maxHeight = Math.max(maxHeight, positiony + height);
     });
-
+  
     return {
       width: maxWidth + padding * 2,
       height: maxHeight + padding * 2,
@@ -65,5 +65,4 @@ function calculateLuminance(r, g, b) {
       yOffset: padding,
     };
   };
-
 export { getHueFromNumber, getTextColorBasedOnBackground, calculateSVGSize };
