@@ -1,7 +1,6 @@
 import pandas as pd
 import random
-import os, csv
-import cv2
+import csv
 from collections import defaultdict
 
 def load_data(route):
