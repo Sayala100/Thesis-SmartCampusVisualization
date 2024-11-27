@@ -25,11 +25,20 @@ function hslToRgb(h, s, l) {
   
     return { r, g, b };
   }
-
-function getHueFromNumber(num, max = 50) {
-    // Map the number from 0 to max to a hue value between 0 and 360 degrees
-    const hue = 120 - (num / max) * 120;
-    return `hsl(${hue}, 100%, 50%)`;  // Return the hue in HSL format with full saturation and lightness at 50%
+function getHueFromNumber(num, max = 40) {
+    // Ensure the number is within the 0 to max range
+    const clampedNum = Math.min(Math.max(num, 0), max);
+    
+    // Invert the calculation so lowest values map to green
+    if (clampedNum <= max / 2) {
+        // From 0 to max/2: transition from green to yellow
+        const hue = 120 - (clampedNum / (max / 2)) * 60;
+        return `hsl(${hue}, 100%, 70%)`;
+    } else {
+        // From max/2 to max: transition from yellow to red
+        const hue = 60 - ((clampedNum - (max / 2)) / (max / 2)) * 60;
+        return `hsl(${hue}, 100%, 70%)`;
+    }
 }
 
 function calculateLuminance(r, g, b) {

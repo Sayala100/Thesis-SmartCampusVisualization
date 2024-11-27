@@ -17,31 +17,69 @@ async function fetchRoomsEntries(){
   }
 }
 
-async function updateOcupation(rectangles, setTime){
+async function updateOcupation(rectangles, setTime, setDisplayTime) {
   const rooms = await fetchRoomsEntries();
   if (!rooms) return;
+
   const regex = /(\d+)(?:\.(\d+))?-(\d+)(?:\.(\d+))?/;
+  
   for (const rango in rooms[Object.keys(rooms)[0]]) {
     const match = rango.match(regex);
-    console.log(match)
+    
     let num1 = match[1];
     let decimal1 = match[2];
     let num2 = match[3];
     let decimal2 = match[4];
+    
     let formattedNum1 = decimal1 === "0" ? `${num1}:00` : `${num1}:${decimal1 === "5" ? "30" : "00"}`;
     let formattedNum2 = decimal2 === "0" ? `${num2}:00` : `${num2}:${decimal2 === "5" ? "30" : "00"}`;
+    
+    setDisplayTime(`${formattedNum1} - ${formattedNum2}`);
+
+    // Prepare occupation states
+    const occupationStates = {};
     for (const room in rooms) {
-      if (room in rectangles){
-        let ocupation = rooms[room][rango];
-        rectangles[room]["ocupation"] = ocupation;
-        console.log(rectangles[room]);
-        setTime(`${formattedNum1} - ${formattedNum2}`);
+      if (room in rectangles) {
+        const endOcupation = rooms[room][rango];
+        
+        occupationStates[room] = {
+          start: rectangles[room]["ocupation"]||0,  // Starting value
+          end: endOcupation  // Increase to full occupation
+        };
       }
-      // console.log(rango);
-      // console.log(room, ocupation);
-      //Create ocupation entry for the rectangle
     }
-    await sleep(1000);
+
+    // Smoothly transition through states
+    for (let i = 0; i <= 100; i++) {
+      // Calculate interpolation factor (0 to 1)
+      const t = i / 100;
+
+      // Update all rooms simultaneously
+      for (const room in occupationStates) {
+        // Linearly interpolate from start to end
+        const interpolatedValue = Math.round(
+          occupationStates[room].start + 
+          (occupationStates[room].end - occupationStates[room].start) * t
+        );
+        
+        rectangles[room]["ocupation"] = interpolatedValue;
+      }
+
+      // Update time display
+      setTime(`${formattedNum1} - Transition (${Math.round(t * 100)}%)`);
+
+      // Wait for a proportional time slice
+      await new Promise(resolve => setTimeout(resolve, 0.5)); 
+    }
+
+    // Ensure final state is exactly the original occupation
+    for (const room in occupationStates) {
+      rectangles[room]["ocupation"] = occupationStates[room].end;
+    }
+
+    await sleep(2000);
+    setTime(`${formattedNum1} - ${formattedNum2}`);
+    setDisplayTime(formattedNum2);
   }
 }
 function sleep(ms) {
@@ -61,6 +99,7 @@ function DetailedView() {
   const [floor, setFloor] = useState("");
   const [hoveredRectangle, setHoveredRectangle] = useState("");
   const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const [displayTime, setDisplayTime] = useState('');
 
   useEffect(() => {
 
@@ -90,7 +129,7 @@ function DetailedView() {
   }, []);  
 
   useEffect(() => {
-    updateOcupation(rectangles, setTime);
+    updateOcupation(rectangles, setTime, setDisplayTime);
   }, [rectangles]);
 
   const svgSize = calculateSVGSize(rectangles);
@@ -109,7 +148,7 @@ function DetailedView() {
         overflow: "hidden", // Prevent scrolling from unnecessary whitespace
       }}>
       <h2>Detalles del edificio: {building} - {floor}</h2>
-      <h3>Franaja horaria: {time}</h3>
+      <h3>Franja horaria: {displayTime}</h3>
       <svg width={svgSize.width} height={svgSize.height}>
         <rect
           x={0}
