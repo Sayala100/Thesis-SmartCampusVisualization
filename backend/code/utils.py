@@ -44,6 +44,7 @@ def get_piso(edificio, piso, day = "I"):
         ".Edif. Aulas": "Aulas",
         ".Bloque TX":"TX",
         ".Edif. Alberto Lleras (LL)": "LL",
+        ".Edif. J.M.Santodomingo (SD)": "SD"
     }
     data['Edificio'] = data['Edificio'].replace(replacements)
     data = data[data['Edificio'] == edificio]
@@ -62,6 +63,25 @@ def get_piso(edificio, piso, day = "I"):
     data['Salón'] = data['Salón'].str.replace('.', '', regex=False)
     data['Salón'] = data['Salón'].str.replace('_', '-', regex=False)
 
+    #FIXME
+    def split_salon(salon):
+        # Split salon is giving something like SD-201-2 and then SD-202
+        if len(salon.split('-')) == 3:
+            base_salon = '-'.join(salon.split('-')[:2])
+            extra_salon = salon.split('-')[2]
+            return [f"{base_salon[:-1]}{extra_salon}", base_salon]
+        return [salon]
+
+
+    expanded_data = []
+    for _, row in data.iterrows():
+        salones = split_salon(row['Salón'])
+        for salon in salones:
+            new_row = row.copy()
+            new_row['Salón'] = salon
+            expanded_data.append(new_row)
+    data = pd.DataFrame(expanded_data)
+    
     data.drop(columns=['Periodo'], inplace=True)
     if edificio!="GA":
         data = data[data["Floor"]==str(piso)]
@@ -70,6 +90,7 @@ def get_piso(edificio, piso, day = "I"):
     data = data.groupby(['Salón','Horas'], as_index=False)['Inscritos'].agg('sum')
 
     # Apply the transformation to the dataframe
+    
     data[['start_time', 'end_time']] = data['Horas'].apply(time_to_numeric).apply(pd.Series)
 
     # Create a list to store results for standardized time ranges
