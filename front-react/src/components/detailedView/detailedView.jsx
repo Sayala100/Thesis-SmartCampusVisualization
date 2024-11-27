@@ -3,13 +3,14 @@ import rectanglesData from './dimensions.json';
 import Rectangle from './rectangle';
 import { calculateSVGSize } from "./utils";
 import axios from 'axios';
-import detailbg from '../assets/detailbg.png';
+import detailbg from '../../assets/detailbg.png';
 
-async function fetchRoomsEntries(){
+async function fetchRoomsEntries(edificio, piso) {
   try {
+    console.log(edificio, piso);
     const response = await axios.post('https://tesis.notadev.lat/get_ocupacion_piso',{
-      Edificio: "ML",
-      Piso: "5"
+      Edificio: edificio,
+      Piso: piso
     });
     return response.data;
   }catch (error){
@@ -17,8 +18,9 @@ async function fetchRoomsEntries(){
   }
 }
 
-async function updateOcupation(rectangles, setTime, setDisplayTime) {
-  const rooms = await fetchRoomsEntries();
+async function updateOcupation(rectangles, setTime, setDisplayTime, edificio, piso) {
+  console.log(edificio, piso);
+  const rooms = await fetchRoomsEntries(edificio, piso);
   if (!rooms) return;
 
   const regex = /(\d+)(?:\.(\d+))?-(\d+)(?:\.(\d+))?/;
@@ -92,50 +94,47 @@ clockElement.remove();
 const canvasElement = document.getElementById('bg');
 canvasElement.remove();
 
-function DetailedView() {
-  
+const DetailedView = () => {
   const [building, setBuilding] = useState("");
   const [rectangles, setRectangles] = useState({});
   const [floor, setFloor] = useState("");
-  const [hoveredRectangle, setHoveredRectangle] = useState("");
+  const [hoveredRectangle, setHoveredRectangle] = useState(null); // Update to store more details
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [displayTime, setDisplayTime] = useState('');
 
   useEffect(() => {
-
     const queryParams = new URLSearchParams(window.location.search);
     const buildingFromUrl = queryParams.get("building");
     const floorFromUrl = queryParams.get("floor");
-  
+
     if (buildingFromUrl && floorFromUrl) {
       setBuilding(buildingFromUrl);
       setFloor(floorFromUrl);
-  
+
       const data = rectanglesData[buildingFromUrl]?.[floorFromUrl];
       if (data) {
-    
         const rectanglesObject = Object.keys(data).reduce((acc, key) => {
+          // Keep only the ones that match the building and floor
           acc[key] = {
             ...data[key],
             text: key,
           };
           return acc;
         }, {});
-  
+
         setRectangles(rectanglesObject);
-        // updateOcupation(rectangles);
       }
     }
-  }, []);  
+  }, []);
 
   useEffect(() => {
-    updateOcupation(rectangles, setTime, setDisplayTime);
+    updateOcupation(rectangles, setTime, setDisplayTime, building, floor);
   }, [rectangles]);
 
   const svgSize = calculateSVGSize(rectangles);
 
   return (
-    <div       
+    <div
       style={{
         position: "relative",
         textAlign: "center",
@@ -143,10 +142,11 @@ function DetailedView() {
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100vh",
-        margin: "0", // Add this
-        padding: "0", // Add this
-        overflow: "hidden", // Prevent scrolling from unnecessary whitespace
-      }}>
+        margin: "0",
+        padding: "0",
+        overflow: "hidden",
+      }}
+    >
       <h2>Detalles del edificio: {building} - {floor}</h2>
       <h3>Franja horaria: {displayTime}</h3>
       <svg width={svgSize.width} height={svgSize.height}>
@@ -155,9 +155,12 @@ function DetailedView() {
           y={0}
           width={svgSize.width}
           height={svgSize.height}
-          fill="white"
+          fill="black"
           stroke="black"
           strokeWidth="2"
+          opacity={0.5}
+          rx={50}
+          ry={50}
         />
         {Object.values(rectangles).map(({ id, positionx, positiony, width, height, text, ocupation }) => (
           <Rectangle
@@ -167,31 +170,35 @@ function DetailedView() {
             width={width}
             height={height}
             text={text}
-            onHover={(name) => setHoveredRectangle(name)}
-            onLeave={() => setHoveredRectangle("")}
+            onHover={() => setHoveredRectangle({ text, positionx, positiony, width, ocupation })}
+            onLeave={() => setHoveredRectangle(null)}
             ocupation={ocupation}
-          />
-        ))}
+            />
+          ))}
       </svg>
       {hoveredRectangle && (
         <div
           style={{
             position: "absolute",
-            top: "10px",
-            left: "50%",
-            transform: "translateX(-50%)",
+            top: `${hoveredRectangle.positiony + svgSize.yOffset +100 }px`, // Slightly above the rectangle
+            left: `${hoveredRectangle.positionx+svgSize.xOffset+690}px`, // To the right of the rectangle
             padding: "10px 20px",
             border: "1px solid #ccc",
             borderRadius: "5px",
             backgroundColor: "#fff",
             boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+            transform: "translate(-50%, -100%)", // Adjust to center the tooltip horizontally and vertically
+            whiteSpace: "nowrap", // Prevent text wrapping
           }}
         >
-          <p style={{ margin: 0 }}>Hovered: <b>{hoveredRectangle}</b></p>
+          <p style={{ margin: 0 }}>Seleccionado: <b>{hoveredRectangle.text}</b>
+          <br></br>
+          Ocupación: {hoveredRectangle.ocupation}%
+          </p>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default DetailedView;

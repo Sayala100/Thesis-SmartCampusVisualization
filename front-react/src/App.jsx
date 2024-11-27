@@ -2,8 +2,8 @@ import React, { useState, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
-const Edificio = lazy(() => import('./edificio'));
-const DetailedView = lazy(() => import('./detailedView/detailedView'));
+const Edificio = lazy(() => import('./components/edificio'));
+const DetailedView = lazy(() => import('./components/detailedView/detailedView'));
 
 function ContenidoApp() {
   return (

@@ -14,6 +14,8 @@ function Rectangle({ x, y, width, height, text, onHover, onLeave, ocupation })  
             fill={hue}
             onMouseEnter={() => onHover(text)}
             onMouseLeave={onLeave}
+            rx={10}
+            ry={10}
         />
         <text
             x={x + width / 2}
