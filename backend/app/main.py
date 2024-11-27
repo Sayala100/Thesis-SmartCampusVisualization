@@ -2,9 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import os, sys
-module_path = os.path.abspath(os.path.join('..', 'code'))
-if module_path not in sys.path:
-    sys.path.append(module_path)
+sys.path.append(os.path.join(os.path.dirname(__file__), '../code'))
 import utils
 
 app = FastAPI()
@@ -20,7 +18,8 @@ app.add_middleware(
 
 @app.get("/procesar_entradas_edificio")
 async def process_csv():
-    data = utils.process_csv('../data/entradas_edificio_hora_completos.csv')
+    data_path = os.path.join(os.path.dirname(__file__), '../data/entradas_edificio_hora_completos.csv')
+    data = utils.process_csv(data_path)
     return data
 
 @app.post("/get_ocupacion_piso")

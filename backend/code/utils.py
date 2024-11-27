@@ -1,6 +1,7 @@
 import pandas as pd
 import random
 import csv
+import os
 from collections import defaultdict
 
 def load_data(route):
@@ -31,7 +32,9 @@ def get_piso(edificio, piso, day = "I"):
     time_ranges = [round(x * 0.5, 1) for x in range(12, 42)]  # 6:00 to 21:00 in half-hour intervals
     standard_times = [f"{time}-{time+0.5}" for time in time_ranges[:-1]]  # Generate time ranges like '6-6.5', '6.5-7', ...
 
-    data = load_data('../data/processed_courses.csv')
+    data_path = os.path.join(os.path.dirname(__file__), '../data/processed_courses.csv')
+
+    data = load_data(data_path)
     #Replace dictionary for Edificio
     replacements = {
         ".Edif. Henry Yerly (O)":"O",
@@ -62,9 +65,7 @@ def get_piso(edificio, piso, day = "I"):
     data['Salón'] = data['Salón'].str.replace('.', '', regex=False)
     data['Salón'] = data['Salón'].str.replace('_', '-', regex=False)
 
-    #FIXME
     def split_salon(salon):
-        # Split salon is giving something like SD-201-2 and then SD-202
         if len(salon.split('-')) == 3:
             base_salon = '-'.join(salon.split('-')[:2])
             extra_salon = salon.split('-')[2]

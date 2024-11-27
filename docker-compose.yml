@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    networks:
+      - app_network
+    ports:
+      - "8000:80"
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    networks:
+      - app_network
+    ports:
+      - "3000:3000"
+
+networks:
+  app_network:
+    driver: bridge
