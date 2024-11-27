@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/navbar/Navbar';
 
 const Edificio = lazy(() => import('./components/edificio'));
 const DetailedView = lazy(() => import('./components/detailedView/detailedView'));
@@ -26,25 +27,7 @@ function App() {
   );
 }
 
-function Selector({ opciones, valorSeleccionado, onChange }) {
-  return (
-    <select
-      style={{
-        padding: '10px',
-        fontSize: '16px',
-        cursor: 'pointer',
-      }}
-      value={valorSeleccionado}
-      onChange={onChange}
-    >
-      {opciones.map((opcion) => (
-        <option key={opcion} value={opcion}>
-          {opcion}
-        </option>
-      ))}
-    </select>
-  );
-}
+
 
 function Principal() {
   const cantidadPisos = {
@@ -58,58 +41,18 @@ function Principal() {
   const [pisos, setPisos] = useState(cantidadPisos["SD"]);
   const [pisoSeleccionado, setPisoSeleccionado] = useState(cantidadPisos["SD"][0]);
 
-  const cambiarEdificio = (e) => {
-    const edificio = e.target.value;
-    setEdificioSeleccionado(edificio);
-    setPisos(cantidadPisos[edificio]);
-    setPisoSeleccionado(cantidadPisos[edificio][0]);
-  };
-
-  const cambiarPiso = (e) => {
-    setPisoSeleccionado(e.target.value);
-  };
-
-  const irADetalle = () => {
-    window.location.href = `/detail?building=${edificioSeleccionado}&floor=${pisoSeleccionado}`;
-  };
-
   return (
     <header className="App-header">
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '20px',
-          position: 'absolute',
-          top: '20px',
-          width: '100%',
-          zIndex: 10,
-        }}
-      >
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <Selector
-            opciones={Object.keys(cantidadPisos)}
-            valorSeleccionado={edificioSeleccionado}
-            onChange={cambiarEdificio}
-          />
-          <Selector
-            opciones={pisos}
-            valorSeleccionado={pisoSeleccionado}
-            onChange={cambiarPiso}
-          />
-        </div>
-        <button
-          style={{
-            padding: '10px 20px',
-            fontSize: '16px',
-            cursor: 'pointer',
-          }}
-          onClick={irADetalle}
-        >
-          Ir a vista detallada
-        </button>
-      </div>
+      {/* Move the dropdowns and button to the Navbar */}
+      <Navbar
+        cantidadPisos={cantidadPisos}
+        edificioSeleccionado={edificioSeleccionado}
+        setEdificioSeleccionado={setEdificioSeleccionado}
+        pisos={pisos}
+        pisoSeleccionado={pisoSeleccionado}
+        setPisoSeleccionado={setPisoSeleccionado}
+      />
+      
       <Edificio />
     </header>
   );

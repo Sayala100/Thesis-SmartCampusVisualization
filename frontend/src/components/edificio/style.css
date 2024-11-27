@@ -19,14 +19,6 @@ main {
 }
 
 
-#clock {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 24px;
-  z-index: 1; /* Asegúrate de que el reloj esté encima del canvas */
-}
-
 body {
   margin: 0; /* Elimina márgenes del body */
   padding: 0; /* Elimina padding del body si lo hay */

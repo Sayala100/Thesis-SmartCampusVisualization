@@ -88,9 +88,6 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const clockElement = document.getElementById('clock');
-clockElement.remove();
-
 const canvasElement = document.getElementById('bg');
 canvasElement.remove();
 

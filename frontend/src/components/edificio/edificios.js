@@ -6,7 +6,22 @@ import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUnifo
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import axios from 'axios';
 
-const clockElement = document.getElementById('clock');
+window.addEventListener('clockkReady', (event) => {
+  const clockElement = document.getElementById('clockk');
+  if (clockElement) {
+    console.log("Clock element text content:", clockElement.textContent);
+    
+    // Attach a method to update the clock text
+    window.updateClockText = (text) => {
+      if (clockElement) {
+        clockElement.textContent = text;
+      }
+    };
+  }
+});
+
+
+
 // Constantes iniciales
 const START_HUES = {
   SD: 0.33,
@@ -179,8 +194,12 @@ async function actualizarColores() {
     let formattedNum1 = decimal1 === "0" ? `${num1}:00` : `${num1}:${decimal1 === "5" ? "30" : "00"}`;
     let formattedNum2 = decimal2 === "0" ? `${num2}:00` : `${num2}:${decimal2 === "5" ? "30" : "00"}`;
     
-    clockElement.textContent = `${formattedNum1} - ${formattedNum2}`;
-
+    if (window.updateClockText) {
+      window.updateClockText(`${formattedNum1} - ${formattedNum2}`);
+    }
+      // clockElement.textContent = (`${formattedNum1} - ${formattedNum2}`)
+      // console.log(clockElement.textContent)
+    
     for (const edificio in edificios) {
       let valor = edificios[edificio][rango];
       if (valor === undefined) valor = 0;
