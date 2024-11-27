@@ -8,7 +8,7 @@ import detailbg from '../../assets/detailbg.png';
 async function fetchRoomsEntries(edificio, piso) {
   try {
     console.log(edificio, piso);
-    const response = await axios.post('http://localhost:4813/get_ocupacion_piso',{
+    const response = await axios.post('http://localhost:2604/get_ocupacion_piso',{
       Edificio: edificio,
       Piso: piso
     });

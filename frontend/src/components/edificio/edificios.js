@@ -161,7 +161,7 @@ createSurroundingLights('O', { x: -12.92, y: 0.49, z: -13.14 }, { x: 1.59, y: 1.
 // Actualizar colores
 async function fetchBuildingEntries() {
   try {
-    const response = await axios.get('http://localhost:4813/procesar_entradas_edificio');
+    const response = await axios.get('http://localhost:2604/procesar_entradas_edificio');
     return response.data;
   } catch (error) {
     console.error('Error fetching building entries:', error);
