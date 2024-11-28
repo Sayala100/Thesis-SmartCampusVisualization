@@ -2,7 +2,7 @@ import  React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Selector from './Selector';
 
-function Navbar({ cantidadPisos, edificioSeleccionado, setEdificioSeleccionado, pisos, pisoSeleccionado, setPisoSeleccionado }) {
+function Navbar({ cantidadPisos, edificioSeleccionado, setEdificioSeleccionado, pisos, pisoSeleccionado, setPisoSeleccionado, setPisos }) {
   useEffect(() => {
     // Notifica cuando el elemento clockk esté listo
     const event = new Event('clockkReady');
@@ -12,6 +12,7 @@ function Navbar({ cantidadPisos, edificioSeleccionado, setEdificioSeleccionado, 
   const cambiarEdificio = (e) => {
     const edificio = e.target.value;
     setEdificioSeleccionado(edificio);
+    setPisos(cantidadPisos[edificio]);
     setPisoSeleccionado(cantidadPisos[edificio][0]); // Reset piso to first option of new building
   };
 

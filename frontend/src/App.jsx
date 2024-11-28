@@ -49,6 +49,7 @@ function Principal() {
         edificioSeleccionado={edificioSeleccionado}
         setEdificioSeleccionado={setEdificioSeleccionado}
         pisos={pisos}
+        setPisos={setPisos}
         pisoSeleccionado={pisoSeleccionado}
         setPisoSeleccionado={setPisoSeleccionado}
       />
