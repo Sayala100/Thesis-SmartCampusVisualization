@@ -35,10 +35,10 @@ Dentro de `/frontend/src/components/detailedView` se encuentra la lógica que di
   "EDIFICIO": {
     "PISO": {
       "EDIFICIO-CODIGO_SALON": {
-        "width": ANCHO,
-        "height": ALTO,
-        "positionx": COORDENADA_X,
-        "positiony": COORDENADA_Y
+        "width": "ANCHO",
+        "height": "ALTO",
+        "positionx": "COORDENADA_X",
+        "positiony": "COORDENADA_Y"
       }
     }
   }
