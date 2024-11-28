@@ -2,6 +2,25 @@
 
 ## Proyecto de grado - Ingeniería de Sistemas y computación
 
+## Despliegue
+La solución fue dockerizada para permitir un acceso rápido y eficiente. Dentro de `/frontend` y `/backend` es posible encontrar un Dockerfile, que especifica las versiones de tecnologías a ser usadas, junto con las dependencias y el comando que se usará para la ejecución. Para ejecutar ambos frontend y backend al mismo tiempo, es posible encontrar a `/docker-compose.yml`, un archivo que condensa las dos apps en un solo archivo, define los puertos y ejecuta el código.
+
+En caso de querer desplegar la solución y ejecutarla desde 
+
+### Requerimientos
+* WSL2 si el SO es windows.
+* Docker (Desktop o engine).
+
+### Ejecucion
+En la raiz del repositorio, ejecutar
+> docker-compose up -d --build
+
+El frontend se puede acceder desde `localhost:4813`
+
+El backend está en `localhost:2604`
+
+En caso de querer cambiar los puertos, se puede hacer desde `/docker.compose.yml`
+
 ## Backend
 ### API
 El framework utilizado fue fastAPI, con el que se consiguió exponer los servicios específicos de analítica necesarios para la obtención y procesamiento de datos.
@@ -44,22 +63,3 @@ Dentro de `/frontend/src/components/detailedView` se encuentra la lógica que di
   }
 }
 ```
-
-## Despliegue
-La solución fue dockerizada para permitir un acceso rápido y eficiente. Dentro de `/frontend` y `/backend` es posible encontrar un Dockerfile, que especifica las versiones de tecnologías a ser usadas, junto con las dependencias y el comando que se usará para la ejecución. Para ejecutar ambos frontend y backend al mismo tiempo, es posible encontrar a `/docker-compose.yml`, un archivo que condensa las dos apps en un solo archivo, define los puertos y ejecuta el código.
-
-En caso de querer desplegar la solución y ejecutarla desde 
-
-### Requerimientos
-* WSL2 si el SO es windows.
-* Docker (Desktop o engine).
-
-### Ejecucion
-En la raiz del repositorio, ejecutar
-> docker-compose up -d --build
-
-El frontend se puede acceder desde `localhost:4813`
-
-El backend está en `localhost:2604`
-
-En caso de querer cambiar los puertos, se puede hacer desde `/docker.compose.yml`
