@@ -5,6 +5,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import axios from 'axios';
+const API_URL = window.location.hostname === 'smartcampus.notadev.lat' ? 'https://tesis.notadev.lat' : 'http://backend:2604';
+
 
 window.addEventListener('clockkReady', (event) => {
   const clockElement = document.getElementById('clockk');
@@ -161,7 +163,7 @@ createSurroundingLights('O', { x: -12.92, y: 0.49, z: -13.14 }, { x: 1.59, y: 1.
 // Actualizar colores
 async function fetchBuildingEntries() {
   try {
-    const response = await axios.get('http://localhost:8000/procesar_entradas_edificio');
+    const response = await axios.get(`${API_URL}/procesar_entradas_edificio`);
     return response.data;
   } catch (error) {
     console.error('Error fetching building entries:', error);

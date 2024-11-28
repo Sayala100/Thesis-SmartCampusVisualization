@@ -6,7 +6,7 @@ services:
     networks:
       - app_network
     ports:
-      - "8000:80"
+      - "2604:2604"
 
   frontend:
     build:
@@ -15,7 +15,7 @@ services:
     networks:
       - app_network
     ports:
-      - "3000:3000"
+      - "4813:3000"
 
 networks:
   app_network:

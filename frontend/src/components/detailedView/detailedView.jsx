@@ -5,10 +5,13 @@ import { calculateSVGSize } from "./utils";
 import axios from 'axios';
 import detailbg from '../../assets/detailbg.png';
 
+const API_URL = window.location.hostname === 'smartcampus.notadev.lat' ? 'https://tesis.notadev.lat' : 'http://backend:2604';
+
 async function fetchRoomsEntries(edificio, piso) {
   try {
     console.log(edificio, piso);
-    const response = await axios.post('http://localhost:8000/get_ocupacion_piso',{
+    
+    const response = await axios.post(`${API_URL}/get_ocupacion_piso`,{
       Edificio: edificio,
       Piso: piso
     });
