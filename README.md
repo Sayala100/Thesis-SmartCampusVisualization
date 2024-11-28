@@ -2,6 +2,8 @@
 
 ## Proyecto de grado - Ingeniería de Sistemas y computación
 
+Demo [aquí](https://smartcampus.notadev.lat/)
+
 ## Despliegue
 La solución fue dockerizada para permitir un acceso rápido y eficiente. Dentro de `/frontend` y `/backend` es posible encontrar un Dockerfile, que especifica las versiones de tecnologías a ser usadas, junto con las dependencias y el comando que se usará para la ejecución. Para ejecutar ambos frontend y backend al mismo tiempo, es posible encontrar a `/docker-compose.yml`, un archivo que condensa las dos apps en un solo archivo, define los puertos y ejecuta el código.
 
