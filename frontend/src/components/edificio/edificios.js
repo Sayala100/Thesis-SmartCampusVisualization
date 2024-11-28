@@ -15,9 +15,7 @@ window.addEventListener('clockkReady', (event) => {
     
     // Attach a method to update the clock text
     window.updateClockText = (text) => {
-      if (clockElement) {
         clockElement.textContent = text;
-      }
     };
   }
 });
