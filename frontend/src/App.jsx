@@ -2,6 +2,7 @@ import React, { useState, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/navbar/Navbar';
+import ColorRange from './components/colorLegend/colorRange';
 
 const Edificio = lazy(() => import('./components/edificio'));
 const DetailedView = lazy(() => import('./components/detailedView/detailedView'));
@@ -53,6 +54,8 @@ function Principal() {
         pisoSeleccionado={pisoSeleccionado}
         setPisoSeleccionado={setPisoSeleccionado}
       />
+
+      <ColorRange />
       
       <Edificio />
     </header>

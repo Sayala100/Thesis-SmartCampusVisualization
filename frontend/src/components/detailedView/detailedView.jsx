@@ -4,6 +4,7 @@ import Rectangle from './rectangle';
 import { calculateSVGSize } from "./utils";
 import axios from 'axios';
 import detailbg from '../../assets/detailbg.png';
+import ColorRange from "../colorLegend/colorRange";
 
 const API_URL = window.location.hostname === 'smartcampus.notadev.lat' ? 'https://tesis.notadev.lat' : 'http://localhost:2604';
 
@@ -147,8 +148,44 @@ const DetailedView = () => {
         overflow: "hidden",
       }}
     >
-      <h2>Detalles del edificio: {building} - {floor}</h2>
-      <h3>Franja horaria: {displayTime}</h3>
+    <div
+    style={{
+      display: "flex", // Flexbox for horizontal layout
+      alignItems: "center", // Vertically align items
+      justifyContent: "center", // Center heading horizontally
+      backgroundColor: "#333",
+      padding: "10px 20px",
+      position: "relative", // Allows precise positioning of the button
+    }}
+  >
+    <button
+      style={{
+        backgroundColor: "#333",
+        color: "white",
+        border: "none",
+        fontSize: "30px",
+        cursor: "pointer",
+        position: "absolute", // Absolute positioning to keep it on the left
+        left: "30px", // Distance from the left edge
+      }}
+      onClick={() => (window.location.href = "/")}
+    >
+      Volver
+    </button>
+
+    <h2
+      style={{
+        color: "white",
+        fontSize: "32px",
+        margin: "0", // Remove default margin for better alignment
+      }}
+    >
+      Detalles del edificio: {building} - {floor}
+    </h2>
+  </div>
+
+      <ColorRange />
+      <h3 style={{color:'white', fontSize:'24px'}}>Franja horaria: {displayTime}</h3>
       <svg width={svgSize.width} height={svgSize.height}>
         <rect
           x={0}
