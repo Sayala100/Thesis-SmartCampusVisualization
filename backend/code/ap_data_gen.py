@@ -14,7 +14,7 @@ fake = Faker()
 #salones = list(csv.reader(archivo_salones))
 #archivo_salones.close()
 #print(salones)
-edificios = ["ML", "SD", "LL", "RGD"]
+edificios = ["ML", "SD", "LL", "RGD", "Au" ,"C","O","Tx"]
 
 pesos_pisos = [
     ("ML_1",2),
@@ -32,7 +32,19 @@ pesos_pisos = [
     ("Sd_3",2),
     ("Sd_4",1),
     ("Sd_7",3),
-    ("Sd_8",3)
+    ("Sd_8",3),
+    ("Au_1",3),
+    ("Au_2",1),
+    ("Au_3",2),
+    ("Au_4",2),
+    ("C_1",3),
+    ("C_2",2),
+    ("C_3",1),
+    ("O_1",3),
+    ("O_2",2),
+    ("O_3",2),
+    ("O_4",1),
+    ("Tx_6",2)
 ]
 
 salones = pd.read_csv('../data/salones.csv', sep=';')
@@ -107,10 +119,10 @@ for index, row in salones.iterrows():
 
     if num_aps ==1:
         data = crear_fila2(capacidad, salon)
-        salones.at[i, "Dispositivos conectados"] = data[0]
-        salones.at[i, "Nombre AP"] = data[1]
-        salones.at[i, "MAC"] = data[2]
-        salones.at[i, "Hora"] = data[3]
+        salones.at[index, "Dispositivos conectados"] = data[0]
+        salones.at[index, "Nombre AP"] = data[1]
+        salones.at[index, "MAC"] = data[2]
+        salones.at[index, "Hora"] = data[3]
     else:
         for j in range(num_aps):
             data = crear_fila2(capacidad, salon)
