@@ -53,7 +53,13 @@ def get_piso(edificio, piso, day = "I"):
 
     def extract_floor(salon):
         if f'.{edificio}_' in salon:
-            return salon.split(f'.{edificio}_')[1].split()[0][0]
+            floor = salon.split(f'.{edificio}_')[1].split()[0]
+            if floor[:2]=='00':
+                return '00'
+            if floor[:3]=='000':
+                return '00'
+            else:
+                return floor[0]
 
         elif "GA" == salon:
             return salon
