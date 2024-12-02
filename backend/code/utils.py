@@ -43,7 +43,7 @@ def get_piso(edificio, piso, day = "I"):
         ".Edif. Mario Laserna (ML)": "ML",
         ".Edif. Gata Golosa(GA)": "GA",
         ".centro cívico":"RGD",
-        ".Edif. Aulas": "Aulas",
+        ".Edif. Aulas": "AU",
         ".Bloque TX":"TX",
         ".Edif. Alberto Lleras (LL)": "LL",
         ".Edif. J.M.Santodomingo (SD)": "SD"

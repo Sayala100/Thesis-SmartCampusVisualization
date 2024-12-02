@@ -83,6 +83,8 @@ const textureLoader = new THREE.TextureLoader();
 const floorTexture = textureLoader.load('/bg.png'); // Replace with the path to your image
 
 floorTexture.flipY = false;
+floorTexture.center.set(0.48, 0.48);
+floorTexture.rotation = Math.PI;
 
 const floorMaterial = new THREE.MeshPhongMaterial({
   map: floorTexture,  // Set the texture as the map
@@ -168,49 +170,92 @@ async function fetchBuildingEntries() {
   }
 }
 
-function calcularTono(valor, minimo = 0, maximo = 1200) {
-  const proporcion = Math.min(Math.max((maximo - valor) / (maximo - minimo), 0), 1);
-  return 0.33 * proporcion;
-}
+
 
 async function actualizarColores() {
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
   const edificios = await fetchBuildingEntries();
   if (!edificios) return;
 
   const regex = /\((\d+)(?:\.(\d+))?, (\d+)(?:\.(\d+))?\)/;
 
-  for (const rango in edificios[Object.keys(edificios)[0]]) {
-    const match = rango.match(regex);
-    if (!match) continue;
-    let num1 = match[1];
-    let decimal1 = match[2];
-    let num2 = match[3];
-    let decimal2 = match[4];
-    
-    // Format the numbers
-    let formattedNum1 = decimal1 === "0" ? `${num1}:00` : `${num1}:${decimal1 === "5" ? "30" : "00"}`;
-    let formattedNum2 = decimal2 === "0" ? `${num2}:00` : `${num2}:${decimal2 === "5" ? "30" : "00"}`;
-    
-    if (window.updateClockText) {
-      window.updateClockText(`${formattedNum1} - ${formattedNum2}`);
+  while (true) { // Infinite loop
+    for (const rango in edificios[Object.keys(edificios)[0]]) {
+      const match = rango.match(regex);
+      if (!match) continue;
+      
+      let num1 = match[1];
+      let decimal1 = match[2];
+      let num2 = match[3];
+      let decimal2 = match[4];
+
+      // Format the numbers
+      let formattedNum1 = decimal1 === "0" ? `${num1}:00` : `${num1}:${decimal1 === "5" ? "30" : "00"}`;
+      let formattedNum2 = decimal2 === "0" ? `${num2}:00` : `${num2}:${decimal2 === "5" ? "30" : "00"}`;
+      
+      if (window.updateClockText) {
+        window.updateClockText(`${formattedNum1} - ${formattedNum2}`);
+      }
+
+      for (const edificio in edificios) {
+        let valor = edificios[edificio][rango];
+        if (valor === undefined) valor = 0;
+        console.log(edificio, valor);
+        
+        const hue = calcularTono(valor, 0, edificio);
+        const startHue = START_HUES[edificio];
+        animateModelLightHue(edificio, startHue, hue, 1000);
+        START_HUES[edificio] = hue;
+      }
+
+      await sleep(1000);
     }
-      // clockElement.textContent = (`${formattedNum1} - ${formattedNum2}`)
-      // console.log(clockElement.textContent)
+
     
-    for (const edificio in edificios) {
-      let valor = edificios[edificio][rango];
-      if (valor === undefined) valor = 0;
-      console.log(edificio, valor);
-      const hue = calcularTono(valor);
-      const startHue = START_HUES[edificio];
-      animateModelLightHue(edificio, startHue, hue, 1000);
-      START_HUES[edificio] = hue;
-    }
-    await sleep(1000);
   }
+}
+
+function calcularTono(valor, minimo = 0, bloque) {
+  let maximo = 1000;
+  if (bloque === 'SD') {
+    maximo = 1400;
+  } else if (bloque === 'ML') {
+    maximo = 1400;
+  }
+  else if (bloque === 'LL') {
+    maximo = 850;
+  }
+  else if (bloque === 'RGD') {
+    maximo = 1950;
+  }
+  else if (bloque === 'Entrada_Caneca') {
+    maximo = 200;
+  }
+  else if (bloque === 'C') {
+    maximo = 950;
+  }
+  else if (bloque === 'TX') {
+    maximo = 120;
+  }
+  else if (bloque === 'GA') {
+    maximo = 100;
+  }
+  else if (bloque === 'AU') {
+    maximo = 1000;
+  }
+  else if (bloque === 'O') {
+    maximo = 1400;
+  }
+
+
+
+  
+  
+  const proporcion = Math.min(Math.max((maximo - valor) / (maximo - minimo), 0), 1);
+  return 0.33 * proporcion;
 }
 
 // Animar luces

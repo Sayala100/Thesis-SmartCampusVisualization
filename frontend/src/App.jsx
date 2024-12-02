@@ -32,10 +32,15 @@ function App() {
 
 function Principal() {
   const cantidadPisos = {
-    ML: ["1", "2", "5", "6"],
+    ML: ["1", "5", "6"],
     LL: ["1", "2", "3"],
     SD: ["2", "3", "4", "7", "8"],
-    RGD: ["0000", "000", "1", "2", "3"],
+    RGD: ["00", "0", "1", "2", "3"],
+    AU: ["1", "2", "3", "4"],
+    C: ["1", "2", "3"],
+    O: ["1", "2", "3", "4"],
+    TX: ["6"],
+
   };
 
   const [edificioSeleccionado, setEdificioSeleccionado] = useState("SD");
