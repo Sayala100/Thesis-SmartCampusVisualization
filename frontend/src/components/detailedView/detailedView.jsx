@@ -28,6 +28,7 @@ async function updateOcupation(rectangles, setTime, setDisplayTime, edificio, pi
   if (!rooms) return;
 
   const regex = /(\d+)(?:\.(\d+))?-(\d+)(?:\.(\d+))?/;
+  while(true){
   
   for (const rango in rooms[Object.keys(rooms)[0]]) {
     const match = rango.match(regex);
@@ -87,6 +88,7 @@ async function updateOcupation(rectangles, setTime, setDisplayTime, edificio, pi
     setTime(`${formattedNum1} - ${formattedNum2}`);
     setDisplayTime(formattedNum2);
   }
+}
 }
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
