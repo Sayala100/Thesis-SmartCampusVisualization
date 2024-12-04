@@ -7,6 +7,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import axios from 'axios';
 const API_URL = window.location.hostname === 'smartcampus.notadev.lat' ? 'https://tesis.notadev.lat' : 'http://localhost:2604';
 
+let manualRangoOverride = null;
+window.manualRangoUpdate = (rango) => {
+    manualRangoOverride = rango;
+};
+
 
 window.addEventListener('clockkReady', (event) => {
   const clockElement = document.getElementById('clockk');
@@ -174,47 +179,57 @@ async function fetchBuildingEntries() {
 
 async function actualizarColores() {
   function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+      return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   const edificios = await fetchBuildingEntries();
   if (!edificios) return;
 
   const regex = /\((\d+)(?:\.(\d+))?, (\d+)(?:\.(\d+))?\)/;
+  const availableRangos = Object.keys(edificios[Object.keys(edificios)[0]]);
 
-  while (true) { // Infinite loop
-    for (const rango in edificios[Object.keys(edificios)[0]]) {
-      const match = rango.match(regex);
-      if (!match) continue;
-      
-      let num1 = match[1];
-      let decimal1 = match[2];
-      let num2 = match[3];
-      let decimal2 = match[4];
+  let isAutomaticCycle = true;
 
-      // Format the numbers
-      let formattedNum1 = decimal1 === "0" ? `${num1}:00` : `${num1}:${decimal1 === "5" ? "30" : "00"}`;
-      let formattedNum2 = decimal2 === "0" ? `${num2}:00` : `${num2}:${decimal2 === "5" ? "30" : "00"}`;
-      
+  async function updateForRango(rango) {
+    const match = rango.match(regex);
+
       if (window.updateClockText) {
+        if (match){
+          let num1 = match[1];
+        let decimal1 = match[2];
+        let num2 = match[3];
+        let decimal2 = match[4];
+  
+        // Format the numbers
+        let formattedNum1 = decimal1 === "0" ? `${num1}:00` : `${num1}:${decimal1 === "5" ? "30" : "00"}`;
+        let formattedNum2 = decimal2 === "0" ? `${num2}:00` : `${num2}:${decimal2 === "5" ? "30" : "00"}`;
         window.updateClockText(`${formattedNum1} - ${formattedNum2}`);
+        }
       }
 
       for (const edificio in edificios) {
-        let valor = edificios[edificio][rango];
-        if (valor === undefined) valor = 0;
-        console.log(edificio, valor);
-        
-        const hue = calcularTono(valor, 0, edificio);
-        const startHue = START_HUES[edificio];
-        animateModelLightHue(edificio, startHue, hue, 1000);
-        START_HUES[edificio] = hue;
+          let valor = edificios[edificio][rango];
+          if (valor === undefined) valor = 0;
+          
+          const hue = calcularTono(valor, 0, edificio);
+          const startHue = START_HUES[edificio];
+          animateModelLightHue(edificio, startHue, hue, 1000);
+          START_HUES[edificio] = hue;
       }
+  }
 
-      await sleep(1000);
-    }
+  window.manualRangoUpdate = (rango) => {
+      isAutomaticCycle = false;
+      updateForRango(rango);
+  };
 
-    
+  // Initial automatic cycle
+  while (isAutomaticCycle) {
+      for (const rango of availableRangos) {
+          if (!isAutomaticCycle) break;
+          await updateForRango(rango);
+          await sleep(1000);
+      }
   }
 }
 

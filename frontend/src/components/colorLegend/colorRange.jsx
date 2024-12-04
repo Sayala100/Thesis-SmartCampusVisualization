@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ColorRange = ({ height = 50, showLabels = true, backgroundColor = '#333' }) => {
+const ColorRange = ({ height = 30, showLabels = true, backgroundColor = '#333' }) => {
 
   return (
     <div

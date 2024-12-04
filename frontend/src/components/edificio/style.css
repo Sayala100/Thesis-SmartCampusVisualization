@@ -25,3 +25,39 @@ body {
   overflow: hidden; /* Oculta el overflow si es necesario */
   background-color: #000; /* Fondo negro para el body */
 }
+
+.edificio-container {
+  position: relative;
+}
+
+.rango-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.slider-inner {
+  background: rgba(255,255,255,0.8);
+  padding: 10px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.rango-slider input[type="range"] {
+  width: 300px;
+}
+
+.slider-labels {
+  text-align: center;
+  margin-top: 2px;
+}
+
+.slider-labels .rango-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
