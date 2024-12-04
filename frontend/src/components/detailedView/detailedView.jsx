@@ -24,6 +24,52 @@ async function fetchRoomsEntries(edificio, piso) {
   }
 }
 
+async function fetchRooms() {
+  try {
+    const response = await axios.get(`${API_URL}/get_salones`);
+    // Ensure the "salones" key is extracted correctly
+    return response.data.salones || []; // Return an empty array if "salones" is undefined
+  } catch (error) {
+    console.error('Error fetching rooms:', error);
+    return []; // Fallback to an empty array to prevent crashes
+  }
+}
+
+function exportToCSV(data, filename) {
+  // Convert data array to a CSV string
+  const csvContent = 'data:text/csv;charset=utf-8,' + data.join('\n');
+  // Create a downloadable link
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement('a');
+  link.setAttribute('href', encodedUri);
+  link.setAttribute('download', filename);
+  // Append link to the document and trigger the download
+  document.body.appendChild(link);
+  link.click();
+  // Clean up
+  document.body.removeChild(link);
+}
+async function download_empty_rooms(rectangles) {
+  let rooms = await fetchRooms();
+  if (!rooms) return;
+  // Extract and flatten all room names from the rectangles object
+  const rectangleRooms = [];
+  for (const buildingKey in rectangles) {
+    const building = rectangles[buildingKey];
+    for (const floorKey in building) {
+      const floor = building[floorKey];
+      for (const roomKey in floor) {
+        rectangleRooms.push(roomKey); // Collect all room keys
+      }
+    }
+  }
+  // Find rooms in `rectangleRooms` that are not in the backend `rooms`
+  const empty_rooms = rectangleRooms.filter(room => !rooms.includes(room));
+  console.log('Empty Rooms:', empty_rooms);
+  // Export to CSV
+  exportToCSV(empty_rooms, 'empty_rooms.csv');
+}
+
 const DetailedView = () => {
   const [building, setBuilding] = useState("");
   const [rectangles, setRectangles] = useState({});
@@ -203,6 +249,52 @@ const DetailedView = () => {
         overflow: "hidden",
       }}
     >
+
+<div
+    style={{
+      display: "flex", // Flexbox for horizontal layout
+      alignItems: "center", // Vertically align items
+      justifyContent: "space-between", // Space out elements
+      backgroundColor: "#333",
+      padding: "10px 20px",
+    }}
+  >
+     <button
+      style={{
+        backgroundColor: "#333",
+        color: "white",
+        border: "none",
+        fontSize: "30px",
+        cursor: "pointer",
+      }}
+      onClick={() => (window.location.href = "/")}
+    >
+      Volver
+    </button>
+  
+    <h2
+      style={{
+        color: "white",
+        fontSize: "32px",
+        margin: "0", // Remove default margin for better alignment
+        flex: "1", // Allow the heading to grow and push itself to the center
+        textAlign: "center", // Center the text within its space
+      }}
+    >
+      Detalles del edificio: {building} - {floor}
+    </h2>
+  
+    <button
+      onClick={() => download_empty_rooms(allRectangles)} // Ensure function is called with parameters
+      style={{
+        padding: "10px 20px",
+        fontSize: "16px",
+        cursor: "pointer",
+        backgroundColor: "#4CAF50",
+        border: "none",
+        color: "white",
+        borderRadius: "5px",}}> Descargar salones no utilizados</button>
+  </div>
       <ColorRange />
       
       {/* Rango Slider */}
