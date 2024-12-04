@@ -30,3 +30,7 @@ async def visualize(data: dict = Body(...)):
     return utils.get_piso(edificio, piso)
     #Return an image from the ../assets/out folder
 
+@app.get("/get_salones")
+async def get_salones():
+    return utils.get_salones()
+

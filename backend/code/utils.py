@@ -129,6 +129,57 @@ def get_piso(edificio, piso, day = "I"):
     return result
 
 
+def get_salones():
+    data_path = os.path.join(os.path.dirname(__file__), '../data/processed_courses.csv')
+
+    data = load_data(data_path)
+
+    def split_salon(salon):
+        if len(salon.split('-')) == 3:
+            base_salon = '-'.join(salon.split('-')[:2])
+            extra_salon = salon.split('-')[2]
+            return [f"{base_salon[:-1]}{extra_salon}", base_salon]
+        return [salon]
+
+    #Replace dictionary for Edificio
+    replacements = {
+        ".Edif. Henry Yerly (O)":"O",
+        ".Bloque C":"C",
+        ".Edif. Carlos Pacheco Devia(W)":"W",
+        ".Edif. Mario Laserna (ML)": "ML",
+        ".Edif. Gata Golosa(GA)": "GA",
+        ".centro cívico":"RGD",
+        ".Edif. Aulas": "AU",
+        ".Bloque TX":"TX",
+        ".Edif. Alberto Lleras (LL)": "LL",
+        ".Edif. J.M.Santodomingo (SD)": "SD"
+    }
+    data['Edificio'] = data['Edificio'].replace(replacements)
+    data.dropna(inplace=True)
+    data['Salón'] = data['Salón'].str.replace('.', '', regex=False)
+    data['Salón'] = data['Salón'].str.replace('_', '-', regex=False)
+    data = data[data['Días'] == 'I']
+    data.drop(columns=['Periodo', 'Curso','NRC','Horas','Días','Inscritos'], inplace=True)
+    data = data.drop_duplicates()
+    data = data[~data['Edificio'].str.contains('\.')]
+
+    expanded_data = []
+    for _, row in data.iterrows():
+        salones = split_salon(row['Salón'])
+        for salon in salones:
+            new_row = row.copy()
+            new_row['Salón'] = salon
+            expanded_data.append(new_row)
+    data = pd.DataFrame(expanded_data)
+    data = data.groupby(['Edificio', 'Salón']).size().reset_index(name='counts')
+    data.drop(columns=['counts'], inplace=True)
+
+    result ={
+        'salones': data['Salón'].tolist()
+    }
+    return result
+
+
 
 # Convert time range string to numeric values (in hours)
 def time_to_numeric(time_str):
