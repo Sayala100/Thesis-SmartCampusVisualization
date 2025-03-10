@@ -81,7 +81,6 @@ for materia in data_json:
     if "Lugar" in lines[8-desplazamiento]:
         extra_despl = 1
 
-
     # Extract other relevant details
     course_data = {
         "Curso": lines[0],
@@ -95,9 +94,9 @@ for materia in data_json:
         "Lugar": lines[9-desplazamiento-extra_despl].split(":")[1].strip(),
         "Horario": horarios,
         # Extract the "Ofrecidos", "Inscritos", and "Disponibles" row (last line)
-        "Ofrecidos": int(lines[-1].split()[1]),
-        "Inscritos": int(lines[-1].split()[2]),
-        "Disponibles": int(lines[-1].split()[3]),
+        "Ofrecidos": int(lines[-2].split()[1]),
+        "Inscritos": int(lines[-2].split()[2]),
+        "Disponibles": int(lines[-2].split()[3]),
     }
 
     # if course_data['NRC'] == "71497":
